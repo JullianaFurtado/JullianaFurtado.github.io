@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Julliana Silva Furtado | Engenharia de Software &amp; IA</title>
+  <meta name="description" content="Portfólio de Julliana Silva Furtado — Estudante de Inteligência Artificial (FIAP) e Análise e Desenvolvimento de Sistemas (UNINTER)." />
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            obsidian: {
+              950: '#0A0C0B',
+              900: '#111614',
+              850: '#161D1A',
+            },
+            forest: {
+              950: '#0E261C',
+              900: '#143829',
+              800: '#1F513B',
+              700: '#2D6A4F',
+              600: '#40916C',
+              400: '#74C69D',
+            },
+            beige: {
+              50: '#F4EFE6',
+              100: '#EDE5D8',
+              200: '#E8DFD1',
+              300: '#D8CBB8',
+              400: '#B8A892',
+            }
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-[#F4EFE6] text-[#0A0C0B] dark:bg-[#0A0C0B] dark:text-[#E8DFD1] font-sans antialiased transition-colors duration-300 selection:bg-[#2D6A4F]/40 selection:text-[#F4EFE6]">
+
+  <!-- Background Subtle Glows (Decorative) -->
+  <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+    <div class="absolute -top-40 -right-40 w-[28rem] h-[28rem] rounded-full bg-[#1F513B]/15 dark:bg-[#143829]/45 blur-3xl"></div>
+    <div class="absolute top-1/3 -left-40 w-[26rem] h-[26rem] rounded-full bg-[#D8CBB8]/40 dark:bg-[#1F513B]/25 blur-3xl"></div>
+  </div>
+
+  <!-- 1. Navigation Bar -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-[#F4EFE6]/85 dark:bg-[#0A0C0B]/85 border-b border-[#D8CBB8] dark:border-[#1F513B]/50 transition-colors duration-300">
+    <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between" aria-label="Navegação Principal">
+      <!-- Logo -->
+      <a href="#inicio" class="font-mono text-base sm:text-lg font-bold tracking-tight flex items-center gap-2 group">
+        <span class="px-2 py-0.5 rounded-md bg-[#143829] text-[#E8DFD1] border border-[#2D6A4F]/60 text-xs sm:text-sm transition-transform duration-300 group-hover:scale-105">JSF</span>
+        <span class="text-[#0A0C0B] dark:text-[#F4EFE6]">Julliana <span class="hidden sm:inline font-medium text-[#1F513B] dark:text-[#D8CBB8]">Silva Furtado</span></span>
+      </a>
+
+      <!-- Desktop Links -->
+      <div class="hidden md:flex items-center gap-7 text-sm font-medium text-[#111614]/80 dark:text-[#D8CBB8]">
+        <a href="#sobre" class="hover:text-[#1F513B] dark:hover:text-[#F4EFE6] transition-colors">Sobre</a>
+        <a href="#projetos" class="hover:text-[#1F513B] dark:hover:text-[#F4EFE6] transition-colors">Projetos</a>
+        <a href="#formacao" class="hover:text-[#1F513B] dark:hover:text-[#F4EFE6] transition-colors">Formação</a>
+        <a href="#habilidades" class="hover:text-[#1F513B] dark:hover:text-[#F4EFE6] transition-colors">Habilidades</a>
+        <a href="#contato" class="hover:text-[#1F513B] dark:hover:text-[#F4EFE6] transition-colors">Contato</a>
+      </div>
+
+      <!-- Actions: Theme Toggle & Mobile Menu Button -->
+      <div class="flex items-center gap-2">
+        <button
+          id="theme-toggle"
+          type="button"
+          aria-label="Alternar tema claro ou escuro"
+          class="p-2.5 rounded-xl bg-[#E8DFD1] hover:bg-[#D8CBB8] dark:bg-[#111614] dark:hover:bg-[#143829] text-[#143829] dark:text-[#E8DFD1] border border-[#D8CBB8] dark:border-[#1F513B]/60 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#2D6A4F]"
+        >
+          <!-- Sun Icon (shown in dark mode) -->
+          <svg id="icon-sun" class="w-5 h-5 hidden dark:block text-[#E8DFD1]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+          </svg>
+          <!-- Moon Icon (shown in light mode) -->
+          <svg id="icon-moon" class="w-5 h-5 block dark:hidden text-[#143829]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <button
+          id="mobile-menu-btn"
+          type="button"
+          aria-label="Abrir menu de navegação"
+          aria-expanded="false"
+          class="md:hidden p-2.5 rounded-xl bg-[#E8DFD1] hover:bg-[#D8CBB8] dark:bg-[#111614] dark:hover:bg-[#143829] text-[#143829] dark:text-[#E8DFD1] border border-[#D8CBB8] dark:border-[#1F513B]/60 transition-colors"
+        >
+          <svg id="menu-open-icon" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <svg id="menu-close-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-[#D8CBB8] dark:border-[#1F513B]/50 bg-[#F4EFE6]/95 dark:bg-[#0A0C0B]/95 backdrop-blur-md px-4 pt-3 pb-5 space-y-2">
+      <a href="#sobre" class="mobile-link block px-3 py-2.5 rounded-xl text-base font-medium text-[#111614] dark:text-[#E8DFD1] hover:bg-[#E8DFD1] dark:hover:bg-[#143829]/60">Sobre</a>
+      <a href="#projetos" class="mobile-link block px-3 py-2.5 rounded-xl text-base font-medium text-[#111614] dark:text-[#E8DFD1] hover:bg-[#E8DFD1] dark:hover:bg-[#143829]/60">Projetos</a>
+      <a href="#formacao" class="mobile-link block px-3 py-2.5 rounded-xl text-base font-medium text-[#111614] dark:text-[#E8DFD1] hover:bg-[#E8DFD1] dark:hover:bg-[#143829]/60">Formação</a>
+      <a href="#habilidades" class="mobile-link block px-3 py-2.5 rounded-xl text-base font-medium text-[#111614] dark:text-[#E8DFD1] hover:bg-[#E8DFD1] dark:hover:bg-[#143829]/60">Habilidades</a>
+      <a href="#contato" class="mobile-link block px-3 py-2.5 rounded-xl text-base font-medium text-[#111614] dark:text-[#E8DFD1] hover:bg-[#E8DFD1] dark:hover:bg-[#143829]/60">Contato</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- 2. Hero Section -->
+    <section id="inicio" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-20 sm:pt-24 sm:pb-28">
+      <div class="flex flex-col-reverse lg:flex-row items-center lg:items-start justify-between gap-10 lg:gap-12">
+        <div class="max-w-2xl flex-1">
+          <!-- Availability Badge -->
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#143829]/10 dark:bg-[#143829]/70 border border-[#2D6A4F]/35 dark:border-[#2D6A4F]/70 text-[#143829] dark:text-[#E8DFD1] text-xs sm:text-sm font-medium mb-6">
+            <span class="relative flex h-2.5 w-2.5">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#2D6A4F] dark:bg-[#74C69D] opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#1F513B] dark:bg-[#74C69D]"></span>
+            </span>
+            Aberta a Estágios e Contratações • IA &amp; Desenvolvimento
+          </div>
+
+          <!-- Hero Title -->
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#0A0C0B] dark:text-[#F4EFE6] leading-[1.15] mb-6">
+            Olá, eu sou <br class="hidden sm:inline" />
+            <span class="bg-gradient-to-r from-[#143829] via-[#2D6A4F] to-[#1F513B] dark:from-[#F4EFE6] dark:via-[#D8CBB8] dark:to-[#74C69D] bg-clip-text text-transparent">
+              Julliana Silva Furtado
+            </span>
+          </h1>
+
+          <!-- Hero Subtitle -->
+          <p class="text-base sm:text-xl text-[#111614]/85 dark:text-[#D8CBB8] leading-relaxed mb-9 max-w-2xl">
+            Estudante de <strong class="font-semibold text-[#0A0C0B] dark:text-[#F4EFE6]">Inteligência Artificial (FIAP)</strong> e <strong class="font-semibold text-[#0A0C0B] dark:text-[#F4EFE6]">Análise e Desenvolvimento de Sistemas (UNINTER)</strong>, construindo pontes entre engenharia de software e soluções práticas com IA.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-wrap items-center gap-3.5">
+            <a
+              href="#projetos"
+              class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm sm:text-base text-[#F4EFE6] bg-[#143829] hover:bg-[#1F513B] dark:bg-[#1F513B] dark:hover:bg-[#2D6A4F] border border-[#2D6A4F]/60 shadow-lg shadow-[#0A0C0B]/20 transition-all duration-200 hover:-translate-y-0.5"
+            >
+              Explorar Projetos
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </a>
+
+            <a
+              href="https://github.com/JullianaFurtado"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2.5 px-5 py-3.5 rounded-xl font-semibold text-sm sm:text-base bg-[#E8DFD1]/80 hover:bg-[#D8CBB8] dark:bg-[#111614] dark:hover:bg-[#143829]/60 text-[#0A0C0B] dark:text-[#E8DFD1] border border-[#D8CBB8] dark:border-[#1F513B]/60 transition-all duration-200 hover:-translate-y-0.5"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
+              </svg>
+              GitHub
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/jullianafurtado/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2.5 px-5 py-3.5 rounded-xl font-semibold text-sm sm:text-base bg-[#E8DFD1]/80 hover:bg-[#D8CBB8] dark:bg-[#111614] dark:hover:bg-[#143829]/60 text-[#0A0C0B] dark:text-[#E8DFD1] border border-[#D8CBB8] dark:border-[#1F513B]/60 transition-all duration-200 hover:-translate-y-0.5"
+            >
+              <svg class="w-5 h-5 text-[#1F513B] dark:text-[#74C69D]" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"></path>
+              </svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+
+        <!-- Profile Photo (Top Right of Hero) -->
+        <div class="relative shrink-0 self-center lg:self-start group">
+          <div class="absolute -inset-2 rounded-2xl bg-gradient-to-tr from-[#143829] via-[#2D6A4F]/60 to-[#E8DFD1]/40 dark:from-[#143829] dark:via-[#2D6A4F]/50 dark:to-[#E8DFD1]/20 blur-md opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <label
+            id="photo-dropzone"
+            for="photo-upload-input"
+            title="Clique, arraste ou cole (Ctrl+V) sua foto de perfil"
+            class="relative block w-64 sm:w-72 aspect-[4/5] rounded-2xl overflow-hidden bg-[#EDE5D8] dark:bg-[#111614] border-2 border-[#1F513B]/45 dark:border-[#1F513B] shadow-2xl shadow-[#0A0C0B]/30 cursor-pointer select-none transition-all duration-300 hover:border-[#2D6A4F] dark:hover:border-[#E8DFD1]/70"
+          >
+            <!-- Editorial Monogram Placeholder (shown when no photo is loaded yet) -->
+            <div id="photo-placeholder" class="w-full h-full relative flex flex-col items-center justify-between p-6 bg-gradient-to-br from-[#143829] via-[#0E261C] to-[#0A0C0B] text-[#E8DFD1]">
+              <!-- Subtle Geometric Lines -->
+              <svg class="absolute inset-0 w-full h-full opacity-20 pointer-events-none" viewBox="0 0 320 400" fill="none" aria-hidden="true">
+                <circle cx="160" cy="175" r="110" stroke="#E8DFD1" stroke-width="0.75" stroke-dasharray="4 4"></circle>
+                <circle cx="160" cy="175" r="76" stroke="#74C69D" stroke-width="0.75"></circle>
+                <line x1="24" y1="0" x2="24" y2="400" stroke="#E8DFD1" stroke-width="0.5"></line>
+                <line x1="296" y1="0" x2="296" y2="400" stroke="#E8DFD1" stroke-width="0.5"></line>
+                <line x1="0" y1="36" x2="320" y2="36" stroke="#E8DFD1" stroke-width="0.5"></line>
+              </svg>
+
+              <div class="relative z-10 w-full flex items-center justify-between text-[10px] font-mono uppercase tracking-widest text-[#D8CBB8]/80">
+                <span>JSF • PORTFÓLIO</span>
+                <span>IA &amp; ADS</span>
+              </div>
+
+              <div class="relative z-10 flex flex-col items-center text-center my-auto">
+                <div class="w-24 h-24 rounded-full border border-[#E8DFD1]/35 bg-[#111614]/60 backdrop-blur-sm flex items-center justify-center shadow-inner mb-3">
+                  <span class="font-mono text-3xl font-bold tracking-wider text-[#F4EFE6]">JF</span>
+                </div>
+                <span class="text-xs font-medium text-[#D8CBB8]">Julliana Silva Furtado</span>
+              </div>
+
+              <div class="relative z-10 w-full">
+                <div class="w-full py-2.5 px-3 rounded-xl bg-[#0A0C0B]/80 hover:bg-[#1F513B] border border-[#E8DFD1]/25 text-center text-xs font-semibold text-[#F4EFE6] flex items-center justify-center gap-2 transition-colors shadow-md">
+                  <svg class="w-4 h-4 text-[#74C69D] shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
+                  </svg>
+                  <span>Clique ou arraste sua foto aqui</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Loaded Photo Element (Hidden until valid src is confirmed) -->
+            <img
+              id="profile-photo-img"
+              alt="Foto de perfil de Julliana Silva Furtado"
+              class="hidden w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+            />
+
+            <!-- Discreet Hover Action Badge (Shown only after a photo is loaded) -->
+            <div id="change-photo-badge" class="hidden absolute bottom-3 right-3 z-20 items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#0A0C0B]/80 backdrop-blur-md border border-[#E8DFD1]/25 text-[11px] font-medium text-[#F4EFE6] opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+              <svg class="w-3.5 h-3.5 text-[#74C69D]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
+                <circle cx="12" cy="13" r="3"></circle>
+              </svg>
+              <span>Trocar foto</span>
+            </div>
+          </label>
+          <input id="photo-upload-input" type="file" accept="image/*" class="hidden" />
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Sobre Mim -->
+    <section id="sobre" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-[#D8CBB8] dark:border-[#1F513B]/45">
+      <div class="mb-10">
+        <span class="font-mono text-xs uppercase tracking-widest text-[#1F513B] dark:text-[#74C69D] font-semibold">01. Perfil</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-[#0A0C0B] dark:text-[#F4EFE6] mt-1">Sobre Mim</h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <!-- Bio Card -->
+        <div class="lg:col-span-7 p-6 sm:p-8 rounded-2xl bg-[#EDE5D8]/90 dark:bg-[#111614] backdrop-blur-md border border-[#D8CBB8] dark:border-[#1F513B]/55 shadow-sm">
+          <p class="text-[#111614]/90 dark:text-[#D8CBB8] text-base sm:text-lg leading-relaxed">
+            Minha trajetória acadêmica combina duas frentes complementares da tecnologia: <strong class="text-[#0A0C0B] dark:text-[#F4EFE6] font-semibold">Análise e Desenvolvimento de Sistemas pela UNINTER</strong> e <strong class="text-[#0A0C0B] dark:text-[#F4EFE6] font-semibold">Inteligência Artificial pela FIAP</strong>. Essa dupla graduação me proporciona uma base sólida em lógica de programação, bancos de dados, engenharia de software, arquitetura de sistemas e segurança da informação, aliada ao desenvolvimento prático de soluções inteligentes. Estou aberta a oportunidades de <strong class="text-[#0A0C0B] dark:text-[#F4EFE6] font-semibold">estágio e contratações (júnior, trainee ou projetos)</strong> para aplicar <strong class="text-[#143829] dark:text-[#74C69D] font-semibold">Python e Inteligência Artificial</strong> na construção de produtos digitais escaláveis, eficientes e orientados a impacto real.
+          </p>
+        </div>
+
+        <!-- Quick Stats Cards -->
+        <div class="lg:col-span-5 grid grid-cols-1 gap-4">
+          <div class="p-5 rounded-2xl bg-[#EDE5D8]/90 dark:bg-[#111614] backdrop-blur-md border border-[#D8CBB8] dark:border-[#1F513B]/55 flex items-center gap-4 hover:border-[#2D6A4F] transition-colors">
+            <div class="w-12 h-12 rounded-xl bg-[#143829]/15 dark:bg-[#143829] text-[#143829] dark:text-[#E8DFD1] flex items-center justify-center shrink-0">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-[#0A0C0B] dark:text-[#F4EFE6] text-base">2 Graduações Tech (FIAP &amp; UNINTER)</h3>
+              <p class="text-xs sm:text-sm text-[#111614]/70 dark:text-[#B8A892] mt-0.5">Inteligência Artificial + Engenharia de Software</p>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-[#EDE5D8]/90 dark:bg-[#111614] backdrop-blur-md border border-[#D8CBB8] dark:border-[#1F513B]/55 flex items-center gap-4 hover:border-[#2D6A4F] transition-colors">
+            <div class="w-12 h-12 rounded-xl bg-[#143829]/15 dark:bg-[#143829] text-[#143829] dark:text-[#E8DFD1] flex items-center justify-center shrink-0">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-[#0A0C0B] dark:text-[#F4EFE6] text-base">Foco em Python, Dados &amp; GenAI</h3>
+              <p class="text-xs sm:text-sm text-[#111614]/70 dark:text-[#B8A892] mt-0.5">Desenvolvimento de APIs, automação e LLMs</p>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-[#EDE5D8]/90 dark:bg-[#111614] backdrop-blur-md border border-[#D8CBB8] dark:border-[#1F513B]/55 flex items-center gap-4 hover:border-[#2D6A4F] transition-colors">
+            <div class="w-12 h-12 rounded-xl bg-[#143829]/15 dark:bg-[#143829] text-[#143829] dark:text-[#E8DFD1] flex items-center justify-center shrink-0">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-[#0A0C0B] dark:text-[#F4EFE6] text-base">Certificação USP em Cibersegurança</h3>
+              <p class="text-xs sm:text-sm text-[#111614]/70 dark:text-[#B8A892] mt-0.5">Segurança da Informação e Ataques Cibernéticos</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Projetos em Destaque -->
+    <section id="projetos" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-[#D8CBB8] dark:border-[#1F513B]/45">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
+        <div>
+          <span class="font-mono text-xs uppercase tracking-widest text-[#1F513B] dark:text-[#74C69D] font-semibold">02. Portfólio</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-[#0A0C0B] dark:text-[#F4EFE6] mt-1">Projetos em Destaque</h2>
+        </div>
+
+        <!-- Category Filter Tabs -->
+        <div class="inline-flex flex-wrap gap-2 p-1.5 rounded-2xl bg-[#E8DFD1] dark:bg-[#111614] border border-[#D8CBB8] dark:border-[#1F513B]/55" role="tablist" aria-label="Filtrar projetos por categoria">
+          <button
+            type="button"
+            data-filter="todos"
+            class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-[#143829] dark:bg-[#1F513B] text-[#F4EFE6] shadow-sm"
+          >
+            Todos
+          </button>
+          <button
+            type="button"
+            data-filter="ia-dados"
+            class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 text-[#111614]/80 dark:text-[#D8CBB8] hover:text-[#0A0C0B] dark:hover:text-[#F4EFE6]"
+          >
+            IA &amp; Dados
+          </button>
+          <button
+            type="button"
+            data-filter="desenvolvimento"
+            class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 text-[#111614]/80 dark:text-[#D8CBB8] hover:text-[#0A0C0B] dark:hover:text-[#F4EFE6]"
+          >
+            Desenvolvimento
+          </button>
+        </div>
+      </div>
+
+      <!-- Projects Grid -->
+      <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Project 1: FarmTech -->
+        <article data-category="ia-dados" class="project-card group flex flex-col justify-between p-6 rounded-2xl bg-[#EDE5D8]/90 dark:bg-[#111614] backdrop-blur-md border border-[#D8CBB8] dark:border-[#1F513B]/55 hover:border-[#2D6A4F] dark:hover:border-[#40916C] shadow-sm hover:shadow-xl hover:shadow-[#0A0C0B]/20 transition-all duration-300 hover:-translate-y-1">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <span class="px-3 py-1 rounded-lg text-xs font-mono font-medium bg-[#143829]/15 text-[#143829] dark:bg-[#143829] dark:text-[#E8DFD1] border border-[#2D6A4F]/30">
+                IA &amp; Dados
+              </span>
+              <a href="https://github.com/JullianaFurtado/FarmTech-Python-Gestao-Agronegocio" target="_blank" rel="noopener noreferrer" aria-label="Ver FarmTech no GitHub" class="text-[#111614]/60 dark:text-[#B8A892] hover:text-[#1F513B] dark:hover:text-[#F4EFE6] transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                </svg>
+              </a>
+            </div>
+
+            <h3 class="text-lg font-bold text-[#0A0C0B] dark:text-[#F4EFE6] group-hover:text-[#1F513B] dark:group-hover:text-[#74C69D] transition-colors mb-2.5">
+              <a href="https://github.com/JullianaFurtado/FarmTech-Python-Gestao-Agronegocio" target="_blank" rel="noopener noreferrer">
+                FarmTech — Sistema de Gestão para o Agronegócio
+              </a>
+            </h3>
+
+            <p class="text-sm text-[#111614]/85 dark:text-[#D8CBB8] leading-relaxed mb-6">
+              Aplicação colaborativa em Python voltada à organização, processamento de dados e gestão operacional no setor do agronegócio.
+            </p>
+          </div>
+
+          <div>
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-[#F4EFE6] dark:bg-[#0A0C0B] text-[#111614] dark:text-[#D8CBB8] border border-[#D8CBB8] dark:border-[#1F513B]/60">Python</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-[#F4EFE6] dark:bg-[#0A0C0B] text-[#111614] dark:text-[#D8CBB8] border border-[#D8CBB8] dark:border-[#1F513B]/60">Git/GitHub</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-[#F4EFE6] dark:bg-[#0A0C0B] text-[#111614] dark:text-[#D8CBB8] border border-[#D8CBB8] dark:border-[#1F513B]/60">Análise de Dados</span>
+            </div>
+
+            <a href="https://github.com/JullianaFurtado/FarmTech-Python-Gestao-Agronegocio" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-semibold text-[#143829] dark:text-[#74C69D] hover:underline">
+              Ver repositório no GitHub
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 2: Pulso -->
+        <article data-category="desenvolvimento" class="project-card group flex flex-col justify-between p-6 rounded-2xl bg-[#EDE5D8]/90 dark:bg-[#111614] backdrop-blur-md border border-[#D8CBB8] dark:border-[#1F513B]/55 hover:border-[#2D6A4F] dark:hover:border-[#40916C] shadow-sm hover:shadow-xl hover:shadow-[#0A0C0B]/20 transition-all duration-300 hover:-translate-y-1">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <span class="px-3 py-1 rounded-lg text-xs font-mono font-medium bg-[#143829]/15 text-[#143829] dark:bg-[#143829] dark:text-[#E8DFD1] border border-[#2D6A4F]/30">
+                Desenvolvimento
+              </span>
+              <a href="https://github.com/JullianaFurtado/pulso-app" target="_blank" rel="noopener noreferrer" aria-label="Ver Pulso no GitHub" class="text-[#111614]/60 dark:text-[#B8A892] hover:text-[#1F513B] dark:hover:text-[#F4EFE6] transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                </svg>
+              </a>
+            </div>
+
+            <h3 class="text-lg font-bold text-[#0A0C0B] dark:text-[#F4EFE6] group-hover:text-[#1F513B] dark:group-hover:text-[#74C69D] transition-colors mb-2.5">
+              <a href="https://github.com/JullianaFurtado/pulso-app" target="_blank" rel="noopener noreferrer">
+                Pulso — Aplicativo Mobile de Hábitos de Saúde
+              </a>
+            </h3>
+
+            <p class="text-sm text-[#111614]/85 dark:text-[#D8CBB8] leading-relaxed mb-6">
+              Aplicativo mobile focado no monitoramento e acompanhamento contínuo de rotinas e métricas de saúde do usuário.
+            </p>
+          </div>
+
+          <div>
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-[#F4EFE6] dark:bg-[#0A0C0B] text-[#111614] dark:text-[#D8CBB8] border border-[#D8CBB8] dark:border-[#1F513B]/60">JavaScript</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-[#F4EFE6] dark:bg-[#0A0C0B] text-[#111614] dark:text-[#D8CBB8] border border-[#D8CBB8] dark:border-[#1F513B]/60">HTML</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-[#F4EFE6] dark:bg-[#0A0C0B] text-[#111614] dark:text-[#D8CBB8] border border-[#D8CBB8] dark:border-[#1F513B]/60">CSS</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-[#F4EFE6] dark:bg-[#0A0C0B] text-[#111614] dark:text-[#D8CBB8] border border-[#D8CBB8] dark:border-[#1F513B]/60">Engenharia de Software</span>
+            </div>
+
+            <a href="https://github.com/JullianaFurtado/pulso-app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-semibold text-[#143829] dark:text-[#74C69D] hover:underline">
+              Ver repositório no GitHub
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 3: GenAI & LLMs -->
+        <article data-category="ia-dados" class="project-card group relative flex flex-col justify-between p-6 rounded-2xl bg-gradient-to-b from-[#EDE5D8] to-[#E8DFD1] dark:from-[#143829]/45 dark:to-[#111614] backdrop-blur-md border border-[#2D6A4F]/45 dark:border-[#2D6A4F]/75 hover:border-[#1F513B] dark:hover:border-[#74C69D] shadow-sm hover:shadow-xl hover:shadow-[#0A0C0B]/20 transition-all duration-300 hover:-translate-y-1">
+          <div>
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <div class="flex items-center gap-2">
+                <span class="px-3 py-1 rounded-lg text-xs font-mono font-medium bg-[#143829] text-[#F4EFE6] border border-[#2D6A4F]/50">
+                  IA &amp; Dados
+                </span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold bg-[#F4EFE6] dark:bg-[#0A0C0B]/90 text-[#143829] dark:text-[#E8DFD1] border border-[#2D6A4F]/40">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#2D6A4F] dark:bg-[#74C69D] animate-pulse"></span>
+                  Em Desenvolvimento
+                </span>
+              </div>
+            </div>
+
+            <h3 class="text-lg font-bold text-[#0A0C0B] dark:text-[#F4EFE6] group-hover:text-[#1F513B] dark:group-hover:text-[#74C69D] transition-colors mb-2.5">
+              Projeto GenAI &amp; LLMs
+            </h3>
+
+            <p class="text-sm text-[#111614]/85 dark:text-[#D8CBB8] leading-relaxed mb-6">
+              Solução de Inteligência Artificial Generativa focada em orquestração de LLMs, automação inteligente e engenharia de prompts para resolução de problemas reais.
+            </p>
+          </div>
+
+          <div>
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-[#F4EFE6] dark:bg-[#0A0C0B] text-[#111614] dark:text-[#D8CBB8] border border-[#D8CBB8] dark:border-[#1F513B]/60">Python</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-[#F4EFE6] dark:bg-[#0A0C0B] text-[#111614] dark:text-[#D8CBB8] border border-[#D8CBB8] dark:border-[#1F513B]/60">GenAI</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-[#F4EFE6] dark:bg-[#0A0C0B] text-[#111614] dark:text-[#D8CBB8] border border-[#D8CBB8] dark:border-[#1F513B]/60">LLMs</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-[#F4EFE6] dark:bg-[#0A0C0B] text-[#111614] dark:text-[#D8CBB8] border border-[#D8CBB8] dark:border-[#1F513B]/60">Prompt Engineering</span>
+            </div>
+
+            <a href="https://github.com/JullianaFurtado" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-semibold text-[#143829] dark:text-[#74C69D] hover:underline">
+              Em breve no GitHub
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 5. Formação Acadêmica & Certificações -->
+    <section id="formacao" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-[#D8CBB8] dark:border-[#1F513B]/45">
+      <div class="mb-10">
+        <span class="font-mono text-xs uppercase tracking-widest text-[#1F513B] dark:text-[#74C69D] font-semibold">03. Trajetória</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-[#0A0C0B] dark:text-[#F4EFE6] mt-1">Formação Acadêmica &amp; Certificações</h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <!-- Academic Degrees -->
+        <div class="lg:col-span-7 space-y-5">
+          <!-- FIAP -->
+          <div class="p-6 rounded-2xl bg-[#EDE5D8]/90 dark:bg-[#111614] backdrop-blur-md border border-[#D8CBB8] dark:border-[#1F513B]/55 relative overflow-hidden">
+            <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#143829] to-[#2D6A4F]"></div>
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <span class="font-mono text-xs font-semibold px-2.5 py-1 rounded-md bg-[#143829]/15 text-[#143829] dark:bg-[#143829] dark:text-[#E8DFD1]">
+                Agosto/2026 – Previsão: Agosto/2028
+              </span>
+              <span class="text-xs font-semibold uppercase tracking-wider text-[#111614]/60 dark:text-[#B8A892]">Graduação Tecnológica</span>
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold text-[#0A0C0B] dark:text-[#F4EFE6]">
+              Curso Superior de Tecnologia (CST) em Inteligência Artificial
+            </h3>
+            <p class="text-sm sm:text-base font-semibold text-[#1F513B] dark:text-[#74C69D] mt-1">FIAP</p>
+            <p class="text-sm text-[#111614]/85 dark:text-[#D8CBB8] mt-3 leading-relaxed">
+              Especialização em fundamentos de Machine Learning, Deep Learning, Processamento de Linguagem Natural (PLN), IA Generativa e ciência de dados aplicada.
+            </p>
+          </div>
+
+          <!-- UNINTER -->
+          <div class="p-6 rounded-2xl bg-[#EDE5D8]/90 dark:bg-[#111614] backdrop-blur-md border border-[#D8CBB8] dark:border-[#1F513B]/55 relative overflow-hidden">
+            <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#2D6A4F] to-[#143829]"></div>
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <span class="font-mono text-xs font-semibold px-2.5 py-1 rounded-md bg-[#143829]/15 text-[#143829] dark:bg-[#143829] dark:text-[#E8DFD1]">
+                Abril/2025 – Previsão: Agosto/2027
+              </span>
+              <span class="text-xs font-semibold uppercase tracking-wider text-[#111614]/60 dark:text-[#B8A892]">Graduação Tecnológica</span>
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold text-[#0A0C0B] dark:text-[#F4EFE6]">
+              Curso Superior de Tecnologia (CST) em Análise e Desenvolvimento de Sistemas
+            </h3>
+            <p class="text-sm sm:text-base font-semibold text-[#1F513B] dark:text-[#74C69D] mt-1">UNINTER</p>
+            <p class="text-sm text-[#111614]/85 dark:text-[#D8CBB8] mt-3 leading-relaxed">
+              Formação estruturada em engenharia de software, algoritmos, estruturas de dados, modelagem de bancos de dados, desenvolvimento web e arquitetura de sistemas.
+            </p>
+          </div>
+        </div>
+
+        <!-- Certifications -->
+        <div class="lg:col-span-5">
+          <div class="h-full p-6 sm:p-7 rounded-2xl bg-[#EDE5D8]/90 dark:bg-[#111614] backdrop-blur-md border border-[#D8CBB8] dark:border-[#1F513B]/55 flex flex-col justify-between">
+            <div>
+              <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#143829] dark:text-[#74C69D] font-semibold mb-4">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                </svg>
+                Certificação em Destaque
+              </div>
+
+              <h3 class="text-lg sm:text-xl font-bold text-[#0A0C0B] dark:text-[#F4EFE6] leading-snug">
+                Cibersegurança: Segurança da Informação e Ataques Cibernéticos
+              </h3>
+
+              <p class="text-sm font-semibold text-[#1F513B] dark:text-[#74C69D] mt-2">
+                Universidade de São Paulo (USP)
+              </p>
+
+              <p class="text-sm text-[#111614]/85 dark:text-[#D8CBB8] mt-4 leading-relaxed">
+                Capacitação voltada à proteção de dados, análise de vulnerabilidades, prevenção contra ameaças digitais e boas práticas de segurança aplicadas ao desenvolvimento de software.
+              </p>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-[#D8CBB8] dark:border-[#1F513B]/50 flex items-center justify-between text-xs text-[#111614]/70 dark:text-[#B8A892] font-mono">
+              <span>Instituição: USP</span>
+              <span class="text-[#143829] dark:text-[#74C69D] font-semibold">Concluído</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Habilidades Técnicas & Idiomas -->
+    <section id="habilidades" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-[#D8CBB8] dark:border-[#1F513B]/45">
+      <div class="mb-10">
+        <span class="font-mono text-xs uppercase tracking-widest text-[#1F513B] dark:text-[#74C69D] font-semibold">04. Stack &amp; Competências</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-[#0A0C0B] dark:text-[#F4EFE6] mt-1">Habilidades Técnicas &amp; Idiomas</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Card 1: Linguagens & Web -->
+        <div class="p-6 rounded-2xl bg-[#EDE5D8]/90 dark:bg-[#111614] backdrop-blur-md border border-[#D8CBB8] dark:border-[#1F513B]/55">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-[#143829]/15 dark:bg-[#143829] text-[#143829] dark:text-[#E8DFD1] flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+            <h3 class="font-bold text-lg text-[#0A0C0B] dark:text-[#F4EFE6]">Linguagens &amp; Desenvolvimento</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 rounded-xl text-xs sm:text-sm font-mono font-medium bg-[#F4EFE6] dark:bg-[#0A0C0B] text-[#111614] dark:text-[#E8DFD1] border border-[#D8CBB8] dark:border-[#1F513B]/60">Python</span>
+            <span class="px-3 py-1.5 rounded-xl text-xs sm:text-sm font-mono font-medium bg-[#F4EFE6] dark:bg-[#0A0C0B] text-[#111614] dark:text-[#E8DFD1] border border-[#D8CBB8] dark:border-[#1F513B]/60">SQL</span>
+            <span class="px-3 py-1.5 rounded-xl text-xs sm:text-sm font-mono font-medium bg-[#F4EFE6] dark:bg-[#0A0C0B] text-[#111614] dark:text-[#E8DFD1] border border-[#D8CBB8] dark:border-[#1F513B]/60">JavaScript</span>
+            <span class="px-3 py-1.5 rounded-xl text-xs sm:text-sm font-mono font-medium bg-[#F4EFE6] dark:bg-[#0A0C0B] text-[#111614] dark:text-[#E8DFD1] border border-[#D8CBB8] dark:border-[#1F513B]/60">HTML</span>
+            <span class="px-3 py-1.5 rounded-xl text-xs sm:text-sm font-mono font-medium bg-[#F4EFE6] dark:bg-[#0A0C0B] text-[#111614] dark:text-[#E8DFD1] border border-[#D8CBB8] dark:border-[#1F513B]/60">CSS</span>
+          </div>
+        </div>
+
+        <!-- Card 2: Inteligência Artificial & Dados -->
+        <div class="p-6 rounded-2xl bg-[#EDE5D8]/90 dark:bg-[#111614] backdrop-blur-md border border-[#D8CBB8] dark:border-[#1F513B]/55">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-[#143829]/15 dark:bg-[#143829] text-[#143829] dark:text-[#E8DFD1] flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+            <h3 class="font-bold text-lg text-[#0A0C0B] dark:text-[#F4EFE6]">Inteligência Artificial &amp; Dados</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 rounded-xl text-xs sm:text-sm font-medium bg-[#F4EFE6] dark:bg-[#0A0C0B] text-[#111614] dark:text-[#E8DFD1] border border-[#D8CBB8] dark:border-[#1F513B]/60">Fundamentos de Inteligência Artificial</span>
+            <span class="px-3 py-1.5 rounded-xl text-xs sm:text-sm font-medium bg-[#F4EFE6] dark:bg-[#0A0C0B] text-[#111614] dark:text-[#E8DFD1] border border-[#D8CBB8] dark:border-[#1F513B]/60">Análise de Dados com IA</span>
+            <span class="px-3 py-1.5 rounded-xl text-xs sm:text-sm font-medium bg-[#F4EFE6] dark:bg-[#0A0C0B] text-[#111614] dark:text-[#E8DFD1] border border-[#D8CBB8] dark:border-[#1F513B]/60">Engenharia de Prompts</span>
+          </div>
+        </div>
+
+        <!-- Card 3: Engenharia & Ferramentas -->
+        <div class="p-6 rounded-2xl bg-[#EDE5D8]/90 dark:bg-[#111614] backdrop-blur-md border border-[#D8CBB8] dark:border-[#1F513B]/55">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-[#143829]/15 dark:bg-[#143829] text-[#143829] dark:text-[#E8DFD1] flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+              </svg>
+            </div>
+            <h3 class="font-bold text-lg text-[#0A0C0B] dark:text-[#F4EFE6]">Engenharia &amp; Segurança</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 rounded-xl text-xs sm:text-sm font-mono font-medium bg-[#F4EFE6] dark:bg-[#0A0C0B] text-[#111614] dark:text-[#E8DFD1] border border-[#D8CBB8] dark:border-[#1F513B]/60">Git</span>
+            <span class="px-3 py-1.5 rounded-xl text-xs sm:text-sm font-mono font-medium bg-[#F4EFE6] dark:bg-[#0A0C0B] text-[#111614] dark:text-[#E8DFD1] border border-[#D8CBB8] dark:border-[#1F513B]/60">GitHub</span>
+            <span class="px-3 py-1.5 rounded-xl text-xs sm:text-sm font-medium bg-[#F4EFE6] dark:bg-[#0A0C0B] text-[#111614] dark:text-[#E8DFD1] border border-[#D8CBB8] dark:border-[#1F513B]/60">Engenharia de Software</span>
+            <span class="px-3 py-1.5 rounded-xl text-xs sm:text-sm font-medium bg-[#F4EFE6] dark:bg-[#0A0C0B] text-[#111614] dark:text-[#E8DFD1] border border-[#D8CBB8] dark:border-[#1F513B]/60">Arquitetura de Sistemas</span>
+            <span class="px-3 py-1.5 rounded-xl text-xs sm:text-sm font-medium bg-[#F4EFE6] dark:bg-[#0A0C0B] text-[#111614] dark:text-[#E8DFD1] border border-[#D8CBB8] dark:border-[#1F513B]/60">Banco de Dados</span>
+            <span class="px-3 py-1.5 rounded-xl text-xs sm:text-sm font-medium bg-[#F4EFE6] dark:bg-[#0A0C0B] text-[#111614] dark:text-[#E8DFD1] border border-[#D8CBB8] dark:border-[#1F513B]/60">Segurança da Informação</span>
+          </div>
+        </div>
+
+        <!-- Card 4: Idiomas -->
+        <div class="p-6 rounded-2xl bg-[#EDE5D8]/90 dark:bg-[#111614] backdrop-blur-md border border-[#D8CBB8] dark:border-[#1F513B]/55 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-xl bg-[#143829]/15 dark:bg-[#143829] text-[#143829] dark:text-[#E8DFD1] flex items-center justify-center">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
+                </svg>
+              </div>
+              <h3 class="font-bold text-lg text-[#0A0C0B] dark:text-[#F4EFE6]">Idiomas</h3>
+            </div>
+            <div class="p-4 rounded-xl bg-[#F4EFE6] dark:bg-[#0A0C0B] border border-[#D8CBB8] dark:border-[#1F513B]/60">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-bold text-[#0A0C0B] dark:text-[#F4EFE6]">Inglês</span>
+                <span class="text-xs font-mono font-semibold px-2.5 py-0.5 rounded-md bg-[#143829] text-[#F4EFE6]">Intermediário</span>
+              </div>
+              <p class="text-xs sm:text-sm text-[#111614]/85 dark:text-[#D8CBB8]">
+                Leitura de documentação técnica, artigos acadêmicos e recursos de desenvolvimento.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Contato -->
+    <section id="contato" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-[#D8CBB8] dark:border-[#1F513B]/45">
+      <div class="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#EDE5D8] via-[#E8DFD1] to-[#D8CBB8]/70 dark:from-[#111614] dark:via-[#143829]/45 dark:to-[#0A0C0B] border border-[#D8CBB8] dark:border-[#1F513B]/65 shadow-lg">
+        <div class="max-w-2xl">
+          <span class="font-mono text-xs uppercase tracking-widest text-[#1F513B] dark:text-[#74C69D] font-semibold">05. Conexão</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-[#0A0C0B] dark:text-[#F4EFE6] mt-1 mb-3">Vamos conversar?</h2>
+          <p class="text-[#111614]/85 dark:text-[#D8CBB8] text-sm sm:text-base leading-relaxed mb-8">
+            Estou aberta tanto a oportunidades de estágio quanto a contratações efetivas (júnior, trainee ou projetos) nas áreas de Inteligência Artificial, Dados e Desenvolvimento de Software.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4">
+          <!-- Location Card -->
+          <div class="lg:col-span-3 p-4 rounded-2xl bg-[#F4EFE6]/90 dark:bg-[#0A0C0B]/85 border border-[#D8CBB8] dark:border-[#1F513B]/60 flex items-center gap-3.5">
+            <div class="w-10 h-10 rounded-xl bg-[#143829]/15 dark:bg-[#143829] text-[#143829] dark:text-[#E8DFD1] flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+            </div>
+            <div>
+              <span class="block text-xs text-[#111614]/65 dark:text-[#B8A892]">Localização</span>
+              <span class="font-semibold text-sm text-[#0A0C0B] dark:text-[#F4EFE6]">Nova Iguaçu, RJ</span>
+            </div>
+          </div>
+
+          <!-- Phone Card -->
+          <div class="lg:col-span-3 p-4 rounded-2xl bg-[#F4EFE6]/90 dark:bg-[#0A0C0B]/85 border border-[#D8CBB8] dark:border-[#1F513B]/60 flex items-center gap-3.5">
+            <div class="w-10 h-10 rounded-xl bg-[#143829]/15 dark:bg-[#143829] text-[#143829] dark:text-[#E8DFD1] flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+              </svg>
+            </div>
+            <div>
+              <span class="block text-xs text-[#111614]/65 dark:text-[#B8A892]">Telefone</span>
+              <a href="tel:+5521976265242" class="font-mono font-semibold text-xs sm:text-sm text-[#0A0C0B] dark:text-[#F4EFE6] hover:text-[#1F513B] dark:hover:text-[#74C69D]">
+                (21) 97626-5242
+              </a>
+            </div>
+          </div>
+
+          <!-- Email Copy Card -->
+          <div class="md:col-span-2 lg:col-span-6 p-4 rounded-2xl bg-[#F4EFE6]/90 dark:bg-[#0A0C0B]/85 border border-[#D8CBB8] dark:border-[#1F513B]/60 flex items-center justify-between gap-2">
+            <div class="flex items-center gap-3.5 min-w-0">
+              <div class="w-10 h-10 rounded-xl bg-[#143829]/15 dark:bg-[#143829] text-[#143829] dark:text-[#E8DFD1] flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+              </div>
+              <div class="min-w-0">
+                <span class="block text-xs text-[#111614]/65 dark:text-[#B8A892]">E-mail Direto</span>
+                <a href="mailto:jullianamiguel@outlook.com" id="email-text" class="font-mono font-semibold text-xs sm:text-sm text-[#0A0C0B] dark:text-[#F4EFE6] hover:text-[#1F513B] dark:hover:text-[#74C69D] truncate block">
+                  jullianamiguel@outlook.com
+                </a>
+              </div>
+            </div>
+
+            <button
+              id="copy-email-btn"
+              type="button"
+              class="shrink-0 inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-[#143829] hover:bg-[#1F513B] dark:bg-[#1F513B] dark:hover:bg-[#2D6A4F] text-[#F4EFE6] border border-[#2D6A4F]/60 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#2D6A4F]"
+            >
+              <svg id="copy-icon" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+              </svg>
+              <svg id="check-icon" class="w-4 h-4 hidden" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span id="copy-btn-label">Copiar E-mail</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Direct Social Links -->
+        <div class="mt-6 pt-6 border-t border-[#D8CBB8] dark:border-[#1F513B]/50 flex flex-wrap items-center gap-4">
+          <a
+            href="https://www.linkedin.com/in/jullianafurtado/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold bg-[#F4EFE6] dark:bg-[#0A0C0B]/85 hover:bg-[#D8CBB8] dark:hover:bg-[#143829]/70 text-[#0A0C0B] dark:text-[#E8DFD1] border border-[#D8CBB8] dark:border-[#1F513B]/60 transition-colors"
+          >
+            <svg class="w-4 h-4 text-[#1F513B] dark:text-[#74C69D]" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"></path>
+            </svg>
+            linkedin.com/in/jullianafurtado
+          </a>
+
+          <a
+            href="https://github.com/JullianaFurtado"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold bg-[#F4EFE6] dark:bg-[#0A0C0B]/85 hover:bg-[#D8CBB8] dark:hover:bg-[#143829]/70 text-[#0A0C0B] dark:text-[#E8DFD1] border border-[#D8CBB8] dark:border-[#1F513B]/60 transition-colors"
+          >
+            <svg class="w-4 h-4 text-[#1F513B] dark:text-[#E8DFD1]" fill="currentColor" viewBox="0 0 24 24">
+              <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
+            </svg>
+            github.com/JullianaFurtado
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 8. Footer -->
+  <footer class="border-t border-[#D8CBB8] dark:border-[#1F513B]/45 py-8 text-center text-xs sm:text-sm text-[#111614]/70 dark:text-[#B8A892]">
+    <div class="max-w-6xl mx-auto px-4">
+      © 2026 Julliana Silva Furtado. Desenvolvido com foco em Engenharia de Software e IA.
+    </div>
+  </footer>
+
+  <!-- Interactive Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Light / Dark Theme Toggle
+      const htmlEl = document.documentElement;
+      const themeToggleBtn = document.getElementById('theme-toggle');
+
+      // Check saved theme preference, default to dark
+      const savedTheme = localStorage.getItem('julliana-portfolio-theme');
+      if (savedTheme === 'light') {
+        htmlEl.classList.remove('dark');
+      } else {
+        htmlEl.classList.add('dark');
+      }
+
+      themeToggleBtn.addEventListener('click', () => {
+        const isDark = htmlEl.classList.toggle('dark');
+        localStorage.setItem('julliana-portfolio-theme', isDark ? 'dark' : 'light');
+      });
+
+      // 2. Responsive Mobile Menu
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuOpenIcon = document.getElementById('menu-open-icon');
+      const menuCloseIcon = document.getElementById('menu-close-icon');
+      const mobileLinks = document.querySelectorAll('.mobile-link');
+
+      function toggleMobileMenu() {
+        const isHidden = mobileMenu.classList.toggle('hidden');
+        mobileMenuBtn.setAttribute('aria-expanded', String(!isHidden));
+        menuOpenIcon.classList.toggle('hidden', !isHidden);
+        menuCloseIcon.classList.toggle('hidden', isHidden);
+      }
+
+      mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (!mobileMenu.classList.contains('hidden')) {
+            toggleMobileMenu();
+          }
+        });
+      });
+
+      // 3. Interactive Project Category Filtering
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const projectCards = document.querySelectorAll('.project-card');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const selectedFilter = btn.getAttribute('data-filter');
+
+          // Update active button styles
+          filterBtns.forEach(b => {
+            b.classList.remove('bg-[#143829]', 'dark:bg-[#1F513B]', 'text-[#F4EFE6]', 'shadow-sm');
+            b.classList.add('text-[#111614]/80', 'dark:text-[#D8CBB8]');
+          });
+          btn.classList.remove('text-[#111614]/80', 'dark:text-[#D8CBB8]');
+          btn.classList.add('bg-[#143829]', 'dark:bg-[#1F513B]', 'text-[#F4EFE6]', 'shadow-sm');
+
+          // Filter cards
+          projectCards.forEach(card => {
+            const cardCategory = card.getAttribute('data-category');
+            if (selectedFilter === 'todos' || cardCategory === selectedFilter) {
+              card.classList.remove('hidden');
+            } else {
+              card.classList.add('hidden');
+            }
+          });
+        });
+      });
+
+      // 4. One-Click Email Copy with Visual Feedback
+      const copyEmailBtn = document.getElementById('copy-email-btn');
+      const copyBtnLabel = document.getElementById('copy-btn-label');
+      const copyIcon = document.getElementById('copy-icon');
+      const checkIcon = document.getElementById('check-icon');
+      const emailValue = 'jullianamiguel@outlook.com';
+      let copyTimeout = null;
+
+      copyEmailBtn.addEventListener('click', () => {
+        try {
+          const tempInput = document.createElement('textarea');
+          tempInput.value = emailValue;
+          tempInput.style.position = 'fixed';
+          tempInput.style.opacity = '0';
+          document.body.appendChild(tempInput);
+          tempInput.select();
+          document.execCommand('copy');
+          document.body.removeChild(tempInput);
+
+          // Update button UI to show "Copiado!"
+          copyBtnLabel.textContent = 'Copiado!';
+          copyIcon.classList.add('hidden');
+          checkIcon.classList.remove('hidden');
+          copyEmailBtn.classList.remove('bg-[#143829]', 'dark:bg-[#1F513B]');
+          copyEmailBtn.classList.add('bg-[#2D6A4F]', 'dark:bg-[#2D6A4F]');
+
+          clearTimeout(copyTimeout);
+          copyTimeout = setTimeout(() => {
+            copyBtnLabel.textContent = 'Copiar E-mail';
+            copyIcon.classList.remove('hidden');
+            checkIcon.classList.add('hidden');
+            copyEmailBtn.classList.remove('bg-[#2D6A4F]', 'dark:bg-[#2D6A4F]');
+            copyEmailBtn.classList.add('bg-[#143829]', 'dark:bg-[#1F513B]');
+          }, 2500);
+        } catch (err) {
+          console.error('Não foi possível copiar o e-mail:', err);
+        }
+      });
+
+      // 5. Profile Photo Loader (Local file check, Upload, Drag & Drop, Ctrl+V Paste & Persistence)
+      const photoPlaceholder = document.getElementById('photo-placeholder');
+      const profilePhotoImg = document.getElementById('profile-photo-img');
+      const changePhotoBadge = document.getElementById('change-photo-badge');
+      const photoUploadInput = document.getElementById('photo-upload-input');
+      const photoDropzone = document.getElementById('photo-dropzone');
+      const PHOTO_STORAGE_KEY = 'julliana-portfolio-profile-photo';
+
+      function applyProfilePhoto(src) {
+        if (!src) return;
+        profilePhotoImg.src = src;
+        profilePhotoImg.classList.remove('hidden');
+        photoPlaceholder.classList.add('hidden');
+        changePhotoBadge.classList.remove('hidden');
+        changePhotoBadge.classList.add('inline-flex');
+      }
+
+      function handleImageFile(file) {
+        if (!file || !file.type.startsWith('image/')) return;
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const dataUrl = event.target && event.target.result;
+          if (typeof dataUrl === 'string') {
+            applyProfilePhoto(dataUrl);
+            try {
+              localStorage.setItem(PHOTO_STORAGE_KEY, dataUrl);
+            } catch (storageErr) {
+              console.warn('Imagem carregada na sessão atual (tamanho excede limite do localStorage).');
+            }
+          }
+        };
+        reader.readAsDataURL(file);
+      }
+
+      // Check localStorage first, otherwise silently probe local file '1782097523220.jpg'
+      const savedPhoto = localStorage.getItem(PHOTO_STORAGE_KEY);
+      if (savedPhoto) {
+        applyProfilePhoto(savedPhoto);
+      } else {
+        const testImg = new Image();
+        testImg.onload = () => applyProfilePhoto('1782097523220.jpg');
+        testImg.onerror = () => {
+          // Keep clean editorial placeholder visible without broken image icon
+        };
+        testImg.src = '1782097523220.jpg';
+      }
+
+      // File picker selection
+      photoUploadInput.addEventListener('change', (e) => {
+        const file = e.target.files && e.target.files[0];
+        if (file) handleImageFile(file);
+      });
+
+      // Drag and drop onto frame
+      ['dragenter', 'dragover'].forEach(evtName => {
+        photoDropzone.addEventListener(evtName, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          photoDropzone.classList.add('ring-2', 'ring-[#74C69D]');
+        });
+      });
+
+      ['dragleave', 'drop'].forEach(evtName => {
+        photoDropzone.addEventListener(evtName, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          photoDropzone.classList.remove('ring-2', 'ring-[#74C69D]');
+        });
+      });
+
+      photoDropzone.addEventListener('drop', (e) => {
+        const file = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+        if (file) handleImageFile(file);
+      });
+
+      // Ctrl+V clipboard image paste support
+      document.addEventListener('paste', (e) => {
+        const items = e.clipboardData && e.clipboardData.items;
+        if (!items) return;
+        for (let i = 0; i < items.length; i++) {
+          if (items[i].type.indexOf('image') !== -1) {
+            const blob = items[i].getAsFile();
+            if (blob) {
+              handleImageFile(blob);
+              break;
+            }
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
