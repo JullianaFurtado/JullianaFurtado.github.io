@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth dark">
+<html lang="pt-BR" class="dark scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,24 +20,24 @@
           },
           colors: {
             obsidian: {
-              950: '#0A0C0B',
-              900: '#101412',
-              850: '#151A17',
+              950: '#090B0A',
+              900: '#0F1311',
+              850: '#141916',
               800: '#1B221E',
             },
             forest: {
-              950: '#0D261C',
-              900: '#143829',
-              800: '#1F513B',
-              700: '#2D6A4F',
-              600: '#40916C',
+              950: '#0C241B',
+              900: '#133628',
+              800: '#1C4D39',
+              700: '#2A6B50',
+              600: '#3D8E6B',
             },
             cream: {
               50: '#FAF7F2',
-              100: '#F4EFE6',
-              200: '#E8DFD1',
-              300: '#D8CCB8',
-              400: '#B8AA96',
+              100: '#F3EDE2',
+              200: '#E6DDD0',
+              300: '#D4C7B4',
+              400: '#B5A690',
             }
           }
         }
@@ -47,14 +47,19 @@
 </head>
 <body class="bg-cream-100 text-obsidian-950 dark:bg-obsidian-950 dark:text-cream-100 font-sans antialiased selection:bg-forest-800 selection:text-cream-100 transition-colors duration-300">
 
-  <!-- Barra de Navegação -->
-  <header class="sticky top-0 z-50 backdrop-blur-md bg-cream-100/85 dark:bg-obsidian-950/85 border-b border-cream-300/70 dark:border-obsidian-800">
+  <!-- Header Fixo -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-cream-100/90 dark:bg-obsidian-950/90 border-b border-cream-300/70 dark:border-obsidian-800">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="#inicio" class="font-display font-bold text-lg tracking-tight flex items-center gap-2.5 group">
-        <span class="w-8 h-8 rounded-lg bg-forest-900 dark:bg-forest-800 text-cream-100 flex items-center justify-center text-sm font-extrabold border border-forest-700/50 group-hover:scale-105 transition-transform">JF</span>
-        <span>Julliana <span class="text-forest-800 dark:text-cream-300 font-semibold">Furtado</span></span>
+      <a href="#inicio" class="flex items-center gap-3 group">
+        <span class="px-2.5 py-1 rounded-lg bg-forest-900 text-cream-100 font-display font-extrabold text-xs tracking-wider border border-forest-700/50 group-hover:bg-forest-800 transition-colors">
+          JSF
+        </span>
+        <span class="font-display font-bold text-base sm:text-lg tracking-tight text-obsidian-950 dark:text-cream-50">
+          Julliana Silva Furtado
+        </span>
       </a>
 
+      <!-- Navegação Desktop -->
       <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-obsidian-800 dark:text-cream-300">
         <a href="#sobre" class="hover:text-forest-800 dark:hover:text-cream-100 transition-colors">Sobre</a>
         <a href="#projetos" class="hover:text-forest-800 dark:hover:text-cream-100 transition-colors">Projetos</a>
@@ -63,77 +68,84 @@
         <a href="#contato" class="hover:text-forest-800 dark:hover:text-cream-100 transition-colors">Contato</a>
       </nav>
 
-      <div class="flex items-center gap-2.5">
+      <!-- Ações do Header -->
+      <div class="flex items-center gap-2">
         <button id="theme-toggle" type="button" aria-label="Alternar tema claro e escuro" class="p-2.5 rounded-xl bg-cream-200/80 dark:bg-obsidian-850 border border-cream-300 dark:border-obsidian-800 text-obsidian-900 dark:text-cream-200 hover:border-forest-700 transition-all">
           <svg id="icon-sun" class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
           <svg id="icon-moon" class="w-4 h-4 block dark:hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </button>
-        <a href="#contato" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-forest-900 hover:bg-forest-800 text-cream-100 text-sm font-semibold border border-forest-700/40 shadow-sm transition-all">
-          Entrar em contato
-        </a>
+
+        <button id="mobile-menu-btn" type="button" aria-label="Abrir menu de navegação" class="md:hidden p-2.5 rounded-xl bg-cream-200/80 dark:bg-obsidian-850 border border-cream-300 dark:border-obsidian-800 text-obsidian-900 dark:text-cream-200">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
       </div>
+    </div>
+
+    <!-- Menu Mobile -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-cream-300/70 dark:border-obsidian-800 bg-cream-100 dark:bg-obsidian-950 px-4 py-3 space-y-2 text-sm font-medium">
+      <a href="#sobre" class="block py-2 text-obsidian-800 dark:text-cream-200 hover:text-forest-700">Sobre</a>
+      <a href="#projetos" class="block py-2 text-obsidian-800 dark:text-cream-200 hover:text-forest-700">Projetos</a>
+      <a href="#formacao" class="block py-2 text-obsidian-800 dark:text-cream-200 hover:text-forest-700">Formação</a>
+      <a href="#habilidades" class="block py-2 text-obsidian-800 dark:text-cream-200 hover:text-forest-700">Habilidades</a>
+      <a href="#contato" class="block py-2 text-obsidian-800 dark:text-cream-200 hover:text-forest-700">Contato</a>
     </div>
   </header>
 
   <main id="inicio">
-    <!-- Hero Section -->
-    <section class="relative overflow-hidden pt-12 pb-16 sm:pt-20 sm:pb-24 border-b border-cream-300/70 dark:border-obsidian-800">
+    <!-- Hero Section (2 Colunas: Texto à Esquerda, Foto à Direita) -->
+    <section class="py-14 sm:py-20 lg:py-24 border-b border-cream-300/70 dark:border-obsidian-800">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           
-          <!-- Texto Principal -->
+          <!-- Coluna Esquerda -->
           <div class="lg:col-span-7 space-y-6">
-            <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-forest-900/10 dark:bg-forest-900/40 border border-forest-800/30 dark:border-forest-700/50 text-forest-900 dark:text-cream-200 text-xs sm:text-sm font-medium">
+            <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-forest-900/10 dark:bg-forest-900/45 border border-forest-800/30 dark:border-forest-700/50 text-forest-900 dark:text-cream-200 text-xs sm:text-sm font-medium">
               <span class="w-2 h-2 rounded-full bg-forest-600 animate-pulse"></span>
               Aberta a Estágios e Contratações • IA &amp; Desenvolvimento
             </div>
 
-            <h1 class="font-display font-extrabold text-3xl sm:text-5xl lg:text-[3.25rem] tracking-tight leading-[1.12] text-obsidian-950 dark:text-cream-50">
-              Julliana Silva Furtado
+            <h1 class="font-display font-extrabold text-3xl sm:text-5xl tracking-tight leading-[1.14] text-obsidian-950 dark:text-cream-50">
+              Olá, eu sou <span class="text-forest-800 dark:text-cream-200">Julliana Silva Furtado</span>
             </h1>
 
-            <p class="text-lg sm:text-xl font-medium text-forest-900 dark:text-cream-300">
-              Inteligência Artificial &amp; Análise e Desenvolvimento de Sistemas
-            </p>
-
             <p class="text-base sm:text-lg text-obsidian-800/90 dark:text-cream-300/90 leading-relaxed max-w-2xl">
-              Estudante de <strong class="font-semibold text-obsidian-950 dark:text-cream-100">Inteligência Artificial (FIAP)</strong> e <strong class="font-semibold text-obsidian-950 dark:text-cream-100">Análise e Desenvolvimento de Sistemas (UNINTER)</strong>, construindo soluções práticas que unem engenharia de software, agentes com LLMs, análise de dados e aplicações modernas.
+              Estudante de <strong class="font-semibold text-obsidian-950 dark:text-cream-100">Inteligência Artificial (FIAP)</strong> e <strong class="font-semibold text-obsidian-950 dark:text-cream-100">Análise e Desenvolvimento de Sistemas (UNINTER)</strong>, construindo pontes entre engenharia de software e soluções práticas com IA.
             </p>
 
             <div class="flex flex-wrap items-center gap-3 pt-2">
-              <a href="#projetos" class="px-5 py-3 rounded-xl bg-forest-900 hover:bg-forest-800 text-cream-100 font-semibold text-sm shadow-md border border-forest-700/40 transition-all">
+              <a href="#projetos" class="px-5 py-3 rounded-xl bg-forest-900 hover:bg-forest-800 text-cream-100 font-semibold text-sm border border-forest-700/50 shadow-sm transition-all">
                 Explorar Projetos
               </a>
               <a href="https://github.com/JullianaFurtado" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-cream-200/80 dark:bg-obsidian-850 hover:bg-cream-200 dark:hover:bg-obsidian-800 text-obsidian-950 dark:text-cream-100 font-semibold text-sm border border-cream-300 dark:border-obsidian-800 transition-all">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
                 GitHub
               </a>
-              <a href="https://www.linkedin.com/in/jullianafurtado" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-cream-200/80 dark:bg-obsidian-850 hover:bg-cream-200 dark:hover:bg-obsidian-800 text-obsidian-950 dark:text-cream-100 font-semibold text-sm border border-cream-300 dark:border-obsidian-800 transition-all">
+              <a href="https://www.linkedin.com/in/jullianafurtado/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-cream-200/80 dark:bg-obsidian-850 hover:bg-cream-200 dark:hover:bg-obsidian-800 text-obsidian-950 dark:text-cream-100 font-semibold text-sm border border-cream-300 dark:border-obsidian-800 transition-all">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
                 LinkedIn
               </a>
             </div>
           </div>
 
-          <!-- Moldura de Foto no Canto Superior Direito -->
+          <!-- Coluna Direita: Moldura da Foto -->
           <div class="lg:col-span-5 flex justify-center lg:justify-end">
             <div class="relative w-64 sm:w-72 md:w-80">
-              <div class="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-forest-900/40 via-forest-700/20 to-cream-300/30 dark:from-forest-900/60 dark:via-forest-800/30 dark:to-cream-200/10 blur-lg"></div>
-              <div id="photo-dropzone" class="relative rounded-3xl overflow-hidden bg-cream-200 dark:bg-obsidian-850 border-2 border-forest-800/40 dark:border-forest-700/50 shadow-xl aspect-[4/5] flex items-center justify-center group transition-all">
+              <div class="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-forest-900/35 via-forest-700/15 to-cream-300/30 dark:from-forest-900/55 dark:via-forest-800/25 dark:to-cream-200/10 blur-md"></div>
+              <div id="photo-dropzone" class="relative rounded-3xl overflow-hidden bg-cream-200 dark:bg-obsidian-850 border-2 border-forest-800/45 dark:border-forest-700/50 shadow-xl aspect-[4/5] flex items-center justify-center group">
                 <img id="profile-photo" src="1782097523220.jpg" alt="Foto de Julliana Silva Furtado" class="w-full h-full object-cover object-top" onerror="this.classList.add('hidden'); document.getElementById('photo-fallback').classList.remove('hidden');">
                 
-                <!-- Fallback Editorial com Monograma JF -->
+                <!-- Fallback Editorial sem Imagem Quebrada -->
                 <div id="photo-fallback" class="hidden w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-forest-950 via-forest-900 to-obsidian-950 text-cream-100 p-6 text-center relative">
                   <div class="absolute inset-3 rounded-2xl border border-cream-200/10 pointer-events-none"></div>
-                  <div class="w-24 h-24 rounded-2xl bg-cream-100/10 border border-cream-200/25 flex items-center justify-center font-display font-extrabold text-3xl tracking-wider text-cream-100 mb-3 shadow-inner">
+                  <div class="w-24 h-24 rounded-2xl bg-cream-100/10 border border-cream-200/25 flex items-center justify-center font-display font-extrabold text-3xl tracking-wider text-cream-100 mb-3">
                     JF
                   </div>
                   <p class="text-sm font-semibold text-cream-100">Julliana Silva Furtado</p>
-                  <p class="text-[11px] text-cream-300/75 mt-1">Clique no ícone ou arraste/cole uma foto</p>
+                  <p class="text-[11px] text-cream-300/75 mt-1">Clique ou arraste sua foto aqui</p>
                 </div>
 
-                <!-- Upload Local Discreto -->
-                <label for="photo-upload" title="Carregar foto (clique, arraste ou Ctrl+V)" class="absolute bottom-3 right-3 p-2.5 rounded-xl bg-obsidian-950/75 hover:bg-forest-900 text-cream-100 border border-cream-200/20 backdrop-blur-sm cursor-pointer opacity-85 group-hover:opacity-100 transition-all">
+                <!-- Upload Discreto para Preview Local -->
+                <label for="photo-upload" title="Carregar foto no preview local" class="absolute bottom-3 right-3 p-2.5 rounded-xl bg-obsidian-950/75 hover:bg-forest-900 text-cream-100 border border-cream-200/20 backdrop-blur-sm cursor-pointer opacity-80 group-hover:opacity-100 transition-all">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
                   <input id="photo-upload" type="file" accept="image/*" class="hidden">
                 </label>
@@ -145,162 +157,200 @@
       </div>
     </section>
 
-    <!-- Sobre Mim -->
+    <!-- 01. Perfil — Sobre Mim (Grid Assimétrico 2 Colunas) -->
     <section id="sobre" class="py-16 sm:py-20 border-b border-cream-300/70 dark:border-obsidian-800">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          <div class="lg:col-span-4">
-            <span class="text-xs font-bold uppercase tracking-widest text-forest-800 dark:text-forest-600">Perfil Profissional</span>
-            <h2 class="font-display font-bold text-2xl sm:text-3xl mt-1.5 text-obsidian-950 dark:text-cream-50">Sobre Mim</h2>
+        <div class="mb-10">
+          <span class="text-xs font-bold uppercase tracking-widest text-forest-800 dark:text-forest-600">01. Perfil</span>
+          <h2 class="font-display font-bold text-2xl sm:text-3xl mt-1.5 text-obsidian-950 dark:text-cream-50">Sobre Mim</h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+          <!-- Coluna Esquerda: Narrativa -->
+          <div class="lg:col-span-7 space-y-4 text-obsidian-800 dark:text-cream-300 leading-relaxed text-base">
+            <p>
+              Sou estudante com dupla graduação em tecnologia — <strong class="text-obsidian-950 dark:text-cream-100 font-semibold">Análise e Desenvolvimento de Sistemas pela UNINTER</strong> e <strong class="text-obsidian-950 dark:text-cream-100 font-semibold">Inteligência Artificial pela FIAP</strong> — unindo base sólida em engenharia de software, banco de dados e arquitetura de sistemas com a construção prática de soluções em IA.
+            </p>
+            <p>
+              Estou aberta a oportunidades de <strong class="text-obsidian-950 dark:text-cream-100 font-semibold">estágios e contratações (júnior, trainee ou projetos)</strong> onde eu possa aplicar Python, análise de dados e Inteligência Artificial Generativa para resolver problemas reais de negócio com código limpo e confiável.
+            </p>
           </div>
-          <div class="lg:col-span-8 space-y-4 text-obsidian-800 dark:text-cream-300 leading-relaxed text-base">
-            <p>
-              Sou graduanda em <strong class="text-obsidian-950 dark:text-cream-100 font-semibold">Inteligência Artificial pela FIAP</strong> e em <strong class="text-obsidian-950 dark:text-cream-100 font-semibold">Análise e Desenvolvimento de Sistemas pela UNINTER</strong>, residindo em Nova Iguaçu (RJ) e disponível para atuação remota ou híbrida em oportunidades de estágio ou contratação efetiva.
-            </p>
-            <p>
-              Meu foco é transformar fundamentos sólidos de engenharia de software, banco de dados, lógica de programação e segurança da informação em produtos digitais funcionais — desde aplicações web e mobile até agentes inteligentes baseados em LLMs com validação estruturada e foco em confiabilidade operacional.
-            </p>
+
+          <!-- Coluna Direita: 3 Cards Horizontais Empilhados -->
+          <div class="lg:col-span-5 space-y-3.5">
+            <div class="p-4 rounded-2xl bg-cream-50 dark:bg-obsidian-900 border border-cream-300 dark:border-obsidian-800 flex items-start gap-3.5">
+              <div class="w-9 h-9 rounded-xl bg-forest-900/15 dark:bg-forest-900/60 text-forest-800 dark:text-cream-200 flex items-center justify-center shrink-0 mt-0.5">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              </div>
+              <div>
+                <h3 class="font-display font-bold text-sm text-obsidian-950 dark:text-cream-50">2 Graduações Tech (FIAP &amp; UNINTER)</h3>
+                <p class="text-xs text-obsidian-800/85 dark:text-cream-300/85 mt-0.5">Inteligência Artificial + Engenharia de Software</p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-cream-50 dark:bg-obsidian-900 border border-cream-300 dark:border-obsidian-800 flex items-start gap-3.5">
+              <div class="w-9 h-9 rounded-xl bg-forest-900/15 dark:bg-forest-900/60 text-forest-800 dark:text-cream-200 flex items-center justify-center shrink-0 mt-0.5">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </div>
+              <div>
+                <h3 class="font-display font-bold text-sm text-obsidian-950 dark:text-cream-50">Foco em Python, Dados &amp; GenAI</h3>
+                <p class="text-xs text-obsidian-800/85 dark:text-cream-300/85 mt-0.5">Desenvolvimento de APIs, automação e LLMs</p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-cream-50 dark:bg-obsidian-900 border border-cream-300 dark:border-obsidian-800 flex items-start gap-3.5">
+              <div class="w-9 h-9 rounded-xl bg-forest-900/15 dark:bg-forest-900/60 text-forest-800 dark:text-cream-200 flex items-center justify-center shrink-0 mt-0.5">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-display font-bold text-sm text-obsidian-950 dark:text-cream-50">Certificação USP em Cibersegurança</h3>
+                <p class="text-xs text-obsidian-800/85 dark:text-cream-300/85 mt-0.5">Segurança da Informação e Ataques Cibernéticos</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Projetos em Destaque -->
+    <!-- 02. Portfólio — Projetos em Destaque -->
     <section id="projetos" class="py-16 sm:py-20 border-b border-cream-300/70 dark:border-obsidian-800">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
           <div>
-            <span class="text-xs font-bold uppercase tracking-widest text-forest-800 dark:text-forest-600">Portfólio Técnico</span>
+            <span class="text-xs font-bold uppercase tracking-widest text-forest-800 dark:text-forest-600">02. Portfólio</span>
             <h2 class="font-display font-bold text-2xl sm:text-3xl mt-1.5 text-obsidian-950 dark:text-cream-50">Projetos em Destaque</h2>
           </div>
-          <a href="https://github.com/JullianaFurtado" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-semibold text-forest-800 dark:text-cream-200 hover:underline">
-            Ver todos os repositórios no GitHub
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
-          </a>
+
+          <!-- Abas de Filtro Discretas -->
+          <div class="inline-flex p-1 rounded-xl bg-cream-200/80 dark:bg-obsidian-900 border border-cream-300 dark:border-obsidian-800 self-start sm:self-auto" role="tablist" aria-label="Filtrar projetos por categoria">
+            <button type="button" data-filter="all" class="filter-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-forest-900 text-cream-100 transition-all">
+              Todos
+            </button>
+            <button type="button" data-filter="ia-dados" class="filter-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-obsidian-800 dark:text-cream-300 hover:text-obsidian-950 dark:hover:text-cream-100 transition-all">
+              IA &amp; Dados
+            </button>
+            <button type="button" data-filter="desenvolvimento" class="filter-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-obsidian-800 dark:text-cream-300 hover:text-obsidian-950 dark:hover:text-cream-100 transition-all">
+              Desenvolvimento
+            </button>
+          </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Grid Uniforme de 3 Colunas Iguais -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
           
-          <!-- Projeto 1: FarmTech -->
-          <article class="flex flex-col justify-between rounded-2xl p-6 bg-cream-50 dark:bg-obsidian-900 border border-cream-300 dark:border-obsidian-800 hover:border-forest-700/70 shadow-sm hover:shadow-md transition-all">
+          <!-- Card 1: FarmTech -->
+          <article data-category="ia-dados" class="project-card flex flex-col justify-between rounded-2xl p-6 bg-cream-50 dark:bg-obsidian-900 border border-cream-300 dark:border-obsidian-800 hover:border-forest-700/70 transition-all">
             <div>
               <div class="flex items-center justify-between gap-2 mb-4">
                 <span class="px-3 py-1 rounded-full text-xs font-semibold bg-forest-900/10 dark:bg-forest-900/50 text-forest-900 dark:text-cream-200 border border-forest-800/20">
-                  Python &amp; Dados
+                  IA &amp; Dados
                 </span>
-                <a href="https://github.com/JullianaFurtado/FarmTech-Python-Gestao-Agronegocio" target="_blank" rel="noopener noreferrer" aria-label="Abrir FarmTech no GitHub" class="p-2 rounded-lg text-obsidian-800 dark:text-cream-300 hover:bg-cream-200 dark:hover:bg-obsidian-800 transition-colors">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                <a href="https://github.com/JullianaFurtado/FarmTech-Python-Gestao-Agronegocio" target="_blank" rel="noopener noreferrer" aria-label="Abrir FarmTech no GitHub" class="text-obsidian-800 dark:text-cream-300 hover:text-forest-700 transition-colors">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
                 </a>
               </div>
 
               <h3 class="font-display font-bold text-lg text-obsidian-950 dark:text-cream-50 mb-2.5 leading-snug">
-                <a href="https://github.com/JullianaFurtado/FarmTech-Python-Gestao-Agronegocio" target="_blank" rel="noopener noreferrer" class="hover:text-forest-800 dark:hover:text-cream-300 transition-colors">
-                  FarmTech — Sistema de Gestão para o Agronegócio
-                </a>
+                FarmTech — Sistema de Gestão para o Agronegócio
               </h3>
 
               <p class="text-sm text-obsidian-800/90 dark:text-cream-300/90 leading-relaxed mb-5">
-                Aplicação colaborativa desenvolvida em Python para organização, processamento de dados e gestão operacional no setor do agronegócio, estruturada com boas práticas de versionamento.
+                Aplicação colaborativa em Python voltada à organização, processamento de dados e gestão operacional no setor do agronegócio.
               </p>
             </div>
 
             <div class="space-y-4 pt-4 border-t border-cream-200 dark:border-obsidian-800">
               <div class="flex flex-wrap gap-1.5">
                 <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-cream-200/70 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-300">Python</span>
-                <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-cream-200/70 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-300">Análise de Dados</span>
                 <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-cream-200/70 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-300">Git/GitHub</span>
+                <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-cream-200/70 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-300">Análise de Dados</span>
               </div>
 
-              <a href="https://github.com/JullianaFurtado/FarmTech-Python-Gestao-Agronegocio" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-cream-200/80 dark:bg-obsidian-850 hover:bg-forest-900 hover:text-cream-100 dark:hover:bg-forest-800 text-obsidian-950 dark:text-cream-100 text-xs font-semibold border border-cream-300 dark:border-obsidian-800 transition-all">
-                Ver repositório no GitHub
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
-              </a>
+              <div class="pt-1 flex items-center justify-between">
+                <a href="https://github.com/JullianaFurtado/FarmTech-Python-Gestao-Agronegocio" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-forest-800 dark:text-cream-200 hover:text-forest-600 dark:hover:text-cream-50 transition-colors">
+                  <span>Ver repositório no GitHub</span>
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                </a>
+              </div>
             </div>
           </article>
 
-          <!-- Projeto 2: Pulso -->
-          <article class="flex flex-col justify-between rounded-2xl p-6 bg-cream-50 dark:bg-obsidian-900 border border-cream-300 dark:border-obsidian-800 hover:border-forest-700/70 shadow-sm hover:shadow-md transition-all">
+          <!-- Card 2: Pulso -->
+          <article data-category="desenvolvimento" class="project-card flex flex-col justify-between rounded-2xl p-6 bg-cream-50 dark:bg-obsidian-900 border border-cream-300 dark:border-obsidian-800 hover:border-forest-700/70 transition-all">
             <div>
               <div class="flex items-center justify-between gap-2 mb-4">
                 <span class="px-3 py-1 rounded-full text-xs font-semibold bg-forest-900/10 dark:bg-forest-900/50 text-forest-900 dark:text-cream-200 border border-forest-800/20">
-                  Mobile &amp; Web
+                  Desenvolvimento
                 </span>
-                <a href="https://github.com/JullianaFurtado/pulso-app" target="_blank" rel="noopener noreferrer" aria-label="Abrir Pulso no GitHub" class="p-2 rounded-lg text-obsidian-800 dark:text-cream-300 hover:bg-cream-200 dark:hover:bg-obsidian-800 transition-colors">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                <a href="https://github.com/JullianaFurtado/pulso-app" target="_blank" rel="noopener noreferrer" aria-label="Abrir Pulso no GitHub" class="text-obsidian-800 dark:text-cream-300 hover:text-forest-700 transition-colors">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
                 </a>
               </div>
 
               <h3 class="font-display font-bold text-lg text-obsidian-950 dark:text-cream-50 mb-2.5 leading-snug">
-                <a href="https://github.com/JullianaFurtado/pulso-app" target="_blank" rel="noopener noreferrer" class="hover:text-forest-800 dark:hover:text-cream-300 transition-colors">
-                  Pulso — Aplicativo Mobile de Hábitos de Saúde
-                </a>
+                Pulso — Aplicativo Mobile de Hábitos de Saúde
               </h3>
 
               <p class="text-sm text-obsidian-800/90 dark:text-cream-300/90 leading-relaxed mb-5">
-                Aplicativo mobile focado no monitoramento e acompanhamento contínuo de rotinas e métricas de saúde do usuário, com interface responsiva e estruturação clara de dados.
+                Aplicativo mobile focado no monitoramento e acompanhamento contínuo de rotinas e métricas de saúde do usuário.
               </p>
             </div>
 
             <div class="space-y-4 pt-4 border-t border-cream-200 dark:border-obsidian-800">
               <div class="flex flex-wrap gap-1.5">
                 <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-cream-200/70 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-300">JavaScript</span>
-                <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-cream-200/70 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-300">HTML5</span>
-                <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-cream-200/70 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-300">CSS3</span>
+                <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-cream-200/70 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-300">HTML</span>
+                <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-cream-200/70 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-300">CSS</span>
+                <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-cream-200/70 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-300">Engenharia de Software</span>
               </div>
 
-              <a href="https://github.com/JullianaFurtado/pulso-app" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-cream-200/80 dark:bg-obsidian-850 hover:bg-forest-900 hover:text-cream-100 dark:hover:bg-forest-800 text-obsidian-950 dark:text-cream-100 text-xs font-semibold border border-cream-300 dark:border-obsidian-800 transition-all">
-                Ver repositório no GitHub
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
-              </a>
+              <div class="pt-1 flex items-center justify-between">
+                <a href="https://github.com/JullianaFurtado/pulso-app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-forest-800 dark:text-cream-200 hover:text-forest-600 dark:hover:text-cream-50 transition-colors">
+                  <span>Ver repositório no GitHub</span>
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                </a>
+              </div>
             </div>
           </article>
 
-          <!-- Projeto 3: Agente de Triagem de Avaliações com IA -->
-          <article class="flex flex-col justify-between rounded-2xl p-6 bg-cream-50 dark:bg-obsidian-900 border border-cream-300 dark:border-obsidian-800 hover:border-forest-700/70 shadow-sm hover:shadow-md transition-all">
+          <!-- Card 3: Agente de Triagem de Avaliações com IA -->
+          <article data-category="ia-dados" class="project-card flex flex-col justify-between rounded-2xl p-6 bg-cream-50 dark:bg-obsidian-900 border border-cream-300 dark:border-obsidian-800 hover:border-forest-700/70 transition-all">
             <div>
               <div class="flex items-center justify-between gap-2 mb-4">
-                <div class="flex items-center gap-2 flex-wrap">
-                  <span class="px-3 py-1 rounded-full text-xs font-semibold bg-forest-900/15 dark:bg-forest-800/50 text-forest-900 dark:text-cream-100 border border-forest-700/40">
-                    IA &amp; Dados
-                  </span>
-                  <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-forest-800/15 dark:bg-forest-900/70 text-forest-900 dark:text-cream-200 border border-forest-600/35">
-                    <span class="w-1.5 h-1.5 rounded-full bg-forest-600 animate-pulse"></span>
-                    Ao Vivo
-                  </span>
-                </div>
-                <a href="https://review-agent-julliana.streamlit.app/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo ao vivo do Agente de Triagem de Avaliações com IA" class="p-2 rounded-lg text-obsidian-800 dark:text-cream-300 hover:bg-cream-200 dark:hover:bg-obsidian-800 transition-colors">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-forest-900/10 dark:bg-forest-900/50 text-forest-900 dark:text-cream-200 border border-forest-800/20">
+                  IA &amp; Dados
+                </span>
+                <a href="https://review-agent-julliana.streamlit.app/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo ao vivo do Agente de Triagem de Avaliações com IA" class="text-obsidian-800 dark:text-cream-300 hover:text-forest-700 transition-colors">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
                 </a>
               </div>
 
               <h3 class="font-display font-bold text-lg text-obsidian-950 dark:text-cream-50 mb-2.5 leading-snug">
-                <a href="https://review-agent-julliana.streamlit.app/" target="_blank" rel="noopener noreferrer" class="hover:text-forest-800 dark:hover:text-cream-300 transition-colors">
-                  Agente de Triagem de Avaliações com IA
-                </a>
+                Agente de Triagem de Avaliações com IA
               </h3>
 
               <p class="text-sm text-obsidian-800/90 dark:text-cream-300/90 leading-relaxed mb-5">
-                Agente que analisa avaliações de clientes de uma aplicação de delivery via LLM (Gemini) com saída validada em JSON, classificando sentimento, categoria, urgência e sugerindo respostas num dashboard com fila priorizada e fallback de resiliência.
+                Agente de IA Generativa que analisa avaliações de delivery via Google Gemini API (JSON validado + fallback por regras), classificando sentimento, urgência e sugerindo respostas em dashboard Streamlit.
               </p>
             </div>
 
             <div class="space-y-4 pt-4 border-t border-cream-200 dark:border-obsidian-800">
               <div class="flex flex-wrap gap-1.5">
                 <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-cream-200/70 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-300">Python</span>
-                <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-cream-200/70 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-300">Google Gemini API</span>
+                <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-cream-200/70 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-300">Gemini API</span>
                 <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-cream-200/70 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-300">Streamlit</span>
                 <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-cream-200/70 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-300">pandas</span>
                 <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-cream-200/70 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-300">pytest</span>
               </div>
 
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                <a href="https://review-agent-julliana.streamlit.app/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-forest-900 hover:bg-forest-800 text-cream-100 text-xs font-semibold border border-forest-700/50 shadow-sm transition-all">
-                  <span>Testar Demo ao Vivo</span>
-                  <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+              <div class="pt-1 flex items-center justify-between gap-4">
+                <a href="https://review-agent-julliana.streamlit.app/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-forest-800 dark:text-cream-200 hover:text-forest-600 dark:hover:text-cream-50 transition-colors">
+                  <span>Demo ao Vivo</span>
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
                 </a>
-                <a href="https://github.com/JullianaFurtado/review-agent" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-cream-200/80 dark:bg-obsidian-850 hover:bg-cream-200 dark:hover:bg-obsidian-800 text-obsidian-950 dark:text-cream-100 text-xs font-semibold border border-cream-300 dark:border-obsidian-800 transition-all">
-                  <span>Código no GitHub</span>
-                  <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
+                <a href="https://github.com/JullianaFurtado/review-agent" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-obsidian-800 dark:text-cream-300 hover:text-forest-700 dark:hover:text-cream-100 transition-colors">
+                  <span>GitHub</span>
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
                 </a>
               </div>
             </div>
@@ -310,133 +360,160 @@
       </div>
     </section>
 
-    <!-- Formação & Certificações -->
+    <!-- 03. Trajetória — Formação Acadêmica & Certificações -->
     <section id="formacao" class="py-16 sm:py-20 border-b border-cream-300/70 dark:border-obsidian-800">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="mb-10">
-          <span class="text-xs font-bold uppercase tracking-widest text-forest-800 dark:text-forest-600">Trajetória Acadêmica</span>
-          <h2 class="font-display font-bold text-2xl sm:text-3xl mt-1.5 text-obsidian-950 dark:text-cream-50">Formação &amp; Certificações</h2>
+          <span class="text-xs font-bold uppercase tracking-widest text-forest-800 dark:text-forest-600">03. Trajetória</span>
+          <h2 class="font-display font-bold text-2xl sm:text-3xl mt-1.5 text-obsidian-950 dark:text-cream-50">Formação Acadêmica &amp; Certificações</h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <!-- Esquerda: Linha do Tempo -->
+          <div class="lg:col-span-7 relative pl-6 border-l-2 border-forest-800/40 dark:border-forest-700/50 space-y-8">
+            <div class="relative">
+              <span class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-forest-700 border-2 border-cream-100 dark:border-obsidian-950"></span>
+              <span class="text-xs font-semibold text-forest-800 dark:text-forest-600">Agosto/2026 – Previsão: Agosto/2028</span>
+              <h3 class="font-display font-bold text-lg text-obsidian-950 dark:text-cream-50 mt-1">
+                CST em Inteligência Artificial
+              </h3>
+              <p class="text-sm font-medium text-obsidian-800 dark:text-cream-300 mt-0.5">
+                FIAP — Faculdade de Informática e Administração Paulista
+              </p>
+            </div>
+
+            <div class="relative">
+              <span class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-forest-700 border-2 border-cream-100 dark:border-obsidian-950"></span>
+              <span class="text-xs font-semibold text-forest-800 dark:text-forest-600">Abril/2025 – Previsão: Agosto/2027</span>
+              <h3 class="font-display font-bold text-lg text-obsidian-950 dark:text-cream-50 mt-1">
+                CST em Análise e Desenvolvimento de Sistemas
+              </h3>
+              <p class="text-sm font-medium text-obsidian-800 dark:text-cream-300 mt-0.5">
+                UNINTER — Centro Universitário Internacional
+              </p>
+            </div>
+          </div>
+
+          <!-- Direita: Card de Certificação em Destaque -->
+          <div class="lg:col-span-5">
+            <div class="rounded-2xl p-6 bg-cream-50 dark:bg-obsidian-900 border border-cream-300 dark:border-obsidian-800 space-y-3">
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-xs font-bold uppercase tracking-wider text-forest-800 dark:text-forest-600">Certificação Acadêmica</span>
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-forest-900/10 dark:bg-forest-900/50 text-forest-900 dark:text-cream-200 border border-forest-800/20">
+                  Concluído
+                </span>
+              </div>
+              <h3 class="font-display font-bold text-lg text-obsidian-950 dark:text-cream-50 leading-snug">
+                Cibersegurança: Segurança da Informação e Ataques Cibernéticos
+              </h3>
+              <p class="text-sm text-obsidian-800 dark:text-cream-300">
+                Universidade de São Paulo (USP)
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04. Stack & Competências — Habilidades Técnicas & Idiomas -->
+    <section id="habilidades" class="py-16 sm:py-20 border-b border-cream-300/70 dark:border-obsidian-800">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-10">
+          <span class="text-xs font-bold uppercase tracking-widest text-forest-800 dark:text-forest-600">04. Stack &amp; Competências</span>
+          <h2 class="font-display font-bold text-2xl sm:text-3xl mt-1.5 text-obsidian-950 dark:text-cream-50">Habilidades Técnicas &amp; Idiomas</h2>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="rounded-2xl p-6 bg-cream-50 dark:bg-obsidian-900 border border-cream-300 dark:border-obsidian-800">
-            <span class="text-xs font-semibold text-forest-800 dark:text-forest-600">Ago/2026 – Previsão: Ago/2028</span>
-            <h3 class="font-display font-bold text-lg text-obsidian-950 dark:text-cream-50 mt-1">CST em Inteligência Artificial</h3>
-            <p class="text-sm font-medium text-obsidian-800 dark:text-cream-300 mt-1">FIAP — Faculdade de Informática e Administração Paulista</p>
+            <h3 class="font-display font-bold text-base text-obsidian-950 dark:text-cream-100 mb-3.5">Linguagens &amp; Desenvolvimento</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-cream-200/80 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-200">Python</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-cream-200/80 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-200">SQL</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-cream-200/80 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-200">JavaScript</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-cream-200/80 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-200">HTML</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-cream-200/80 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-200">CSS</span>
+            </div>
           </div>
 
           <div class="rounded-2xl p-6 bg-cream-50 dark:bg-obsidian-900 border border-cream-300 dark:border-obsidian-800">
-            <span class="text-xs font-semibold text-forest-800 dark:text-forest-600">Abr/2025 – Previsão: Ago/2027</span>
-            <h3 class="font-display font-bold text-lg text-obsidian-950 dark:text-cream-50 mt-1">CST em Análise e Desenvolvimento de Sistemas (ADS)</h3>
-            <p class="text-sm font-medium text-obsidian-800 dark:text-cream-300 mt-1">UNINTER — Centro Universitário Internacional</p>
+            <h3 class="font-display font-bold text-base text-obsidian-950 dark:text-cream-100 mb-3.5">Inteligência Artificial &amp; Dados</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-cream-200/80 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-200">Fundamentos de Inteligência Artificial</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-cream-200/80 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-200">Análise de Dados com IA</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-cream-200/80 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-200">Engenharia de Prompts</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-cream-200/80 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-200">LLMs &amp; GenAI</span>
+            </div>
           </div>
 
-          <div class="md:col-span-2 rounded-2xl p-6 bg-cream-50 dark:bg-obsidian-900 border border-cream-300 dark:border-obsidian-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div>
-              <span class="text-xs font-semibold uppercase tracking-wider text-forest-800 dark:text-forest-600">Certificação Acadêmica</span>
-              <h3 class="font-display font-bold text-lg text-obsidian-950 dark:text-cream-50 mt-1">Cibersegurança: Segurança da Informação e Ataques Cibernéticos</h3>
-              <p class="text-sm text-obsidian-800 dark:text-cream-300 mt-0.5">Universidade de São Paulo (USP)</p>
+          <div class="rounded-2xl p-6 bg-cream-50 dark:bg-obsidian-900 border border-cream-300 dark:border-obsidian-800">
+            <h3 class="font-display font-bold text-base text-obsidian-950 dark:text-cream-100 mb-3.5">Engenharia &amp; Segurança</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-cream-200/80 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-200">Git</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-cream-200/80 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-200">GitHub</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-cream-200/80 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-200">Engenharia de Software</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-cream-200/80 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-200">Arquitetura de Sistemas</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-cream-200/80 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-200">Banco de Dados</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-cream-200/80 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-200">Segurança da Informação</span>
             </div>
-            <span class="self-start sm:self-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-forest-900/10 dark:bg-forest-900/50 text-forest-900 dark:text-cream-200 border border-forest-800/20">
-              Concluído
-            </span>
+          </div>
+
+          <div class="rounded-2xl p-6 bg-cream-50 dark:bg-obsidian-900 border border-cream-300 dark:border-obsidian-800">
+            <h3 class="font-display font-bold text-base text-obsidian-950 dark:text-cream-100 mb-3.5">Idiomas</h3>
+            <p class="text-sm font-semibold text-obsidian-950 dark:text-cream-100">Inglês — Intermediário</p>
+            <p class="text-sm text-obsidian-800/90 dark:text-cream-300/90 mt-1 leading-relaxed">
+              Leitura de documentação técnica, artigos acadêmicos e recursos de desenvolvimento.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Habilidades & Idiomas -->
-    <section id="habilidades" class="py-16 sm:py-20 border-b border-cream-300/70 dark:border-obsidian-800">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="mb-10">
-          <span class="text-xs font-bold uppercase tracking-widest text-forest-800 dark:text-forest-600">Competências</span>
-          <h2 class="font-display font-bold text-2xl sm:text-3xl mt-1.5 text-obsidian-950 dark:text-cream-50">Stack Técnica &amp; Idiomas</h2>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="rounded-2xl p-6 bg-cream-50 dark:bg-obsidian-900 border border-cream-300 dark:border-obsidian-800">
-            <h3 class="font-display font-bold text-base text-obsidian-950 dark:text-cream-100 mb-3">Linguagens &amp; Web</h3>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1 rounded-lg text-xs font-medium bg-cream-200/80 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-200">Python</span>
-              <span class="px-3 py-1 rounded-lg text-xs font-medium bg-cream-200/80 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-200">SQL</span>
-              <span class="px-3 py-1 rounded-lg text-xs font-medium bg-cream-200/80 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-200">JavaScript</span>
-              <span class="px-3 py-1 rounded-lg text-xs font-medium bg-cream-200/80 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-200">HTML5</span>
-              <span class="px-3 py-1 rounded-lg text-xs font-medium bg-cream-200/80 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-200">CSS3</span>
-            </div>
-          </div>
-
-          <div class="rounded-2xl p-6 bg-cream-50 dark:bg-obsidian-900 border border-cream-300 dark:border-obsidian-800">
-            <h3 class="font-display font-bold text-base text-obsidian-950 dark:text-cream-100 mb-3">IA &amp; Dados</h3>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1 rounded-lg text-xs font-medium bg-cream-200/80 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-200">Google Gemini API</span>
-              <span class="px-3 py-1 rounded-lg text-xs font-medium bg-cream-200/80 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-200">LLMs &amp; Prompts</span>
-              <span class="px-3 py-1 rounded-lg text-xs font-medium bg-cream-200/80 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-200">Streamlit</span>
-              <span class="px-3 py-1 rounded-lg text-xs font-medium bg-cream-200/80 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-200">pandas</span>
-            </div>
-          </div>
-
-          <div class="rounded-2xl p-6 bg-cream-50 dark:bg-obsidian-900 border border-cream-300 dark:border-obsidian-800">
-            <h3 class="font-display font-bold text-base text-obsidian-950 dark:text-cream-100 mb-3">Engenharia &amp; Testes</h3>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1 rounded-lg text-xs font-medium bg-cream-200/80 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-200">Git &amp; GitHub</span>
-              <span class="px-3 py-1 rounded-lg text-xs font-medium bg-cream-200/80 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-200">pytest</span>
-              <span class="px-3 py-1 rounded-lg text-xs font-medium bg-cream-200/80 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-200">Banco de Dados</span>
-              <span class="px-3 py-1 rounded-lg text-xs font-medium bg-cream-200/80 dark:bg-obsidian-850 text-obsidian-900 dark:text-cream-200">Segurança</span>
-            </div>
-          </div>
-
-          <div class="rounded-2xl p-6 bg-cream-50 dark:bg-obsidian-900 border border-cream-300 dark:border-obsidian-800">
-            <h3 class="font-display font-bold text-base text-obsidian-950 dark:text-cream-100 mb-3">Idiomas</h3>
-            <p class="text-sm font-semibold text-obsidian-950 dark:text-cream-100">Português</p>
-            <p class="text-xs text-obsidian-800 dark:text-cream-300 mb-3">Nativo</p>
-            <p class="text-sm font-semibold text-obsidian-950 dark:text-cream-100">Inglês</p>
-            <p class="text-xs text-obsidian-800 dark:text-cream-300">Intermediário — leitura de documentação técnica</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contato -->
+    <!-- 05. Conexão — Vamos conversar? -->
     <section id="contato" class="py-16 sm:py-20">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="rounded-3xl p-8 sm:p-12 bg-gradient-to-br from-forest-950 via-forest-900 to-obsidian-950 text-cream-100 border border-forest-700/40 shadow-xl">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div class="lg:col-span-7 space-y-4">
-              <span class="text-xs font-bold uppercase tracking-widest text-cream-300">Vamos Conversar</span>
-              <h2 class="font-display font-bold text-2xl sm:text-4xl text-cream-50">
-                Pronta para contribuir em times de Inteligência Artificial e Engenharia de Software.
-              </h2>
-              <p class="text-cream-200/90 text-sm sm:text-base leading-relaxed">
-                Nova Iguaçu, RJ • Disponível para oportunidades de estágio e contratações efetivas (remoto ou híbrido).
-              </p>
-            </div>
+        <div class="mb-8">
+          <span class="text-xs font-bold uppercase tracking-widest text-forest-800 dark:text-forest-600">05. Conexão</span>
+          <h2 class="font-display font-bold text-2xl sm:text-3xl mt-1.5 text-obsidian-950 dark:text-cream-50">Vamos conversar?</h2>
+          <p class="text-sm sm:text-base text-obsidian-800/90 dark:text-cream-300/90 mt-2 max-w-2xl">
+            Estou disponível para oportunidades de estágios e contratações efetivas em Engenharia de Software, Dados e Inteligência Artificial.
+          </p>
+        </div>
 
-            <div class="lg:col-span-5 flex flex-col gap-3">
-              <div class="flex items-center justify-between gap-2 p-3.5 rounded-xl bg-obsidian-950/60 border border-cream-200/15">
-                <a href="mailto:jullianamiguel@outlook.com" class="text-sm font-medium text-cream-100 truncate hover:underline">
-                  jullianamiguel@outlook.com
-                </a>
-                <button id="copy-email-btn" type="button" class="px-3 py-1.5 rounded-lg bg-forest-800 hover:bg-forest-700 text-cream-100 text-xs font-semibold shrink-0 transition-colors">
-                  Copiar
-                </button>
-              </div>
-
-              <a href="https://wa.me/5521976265242" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3.5 rounded-xl bg-obsidian-950/60 hover:bg-obsidian-950/80 border border-cream-200/15 text-sm font-medium text-cream-100 transition-colors">
-                <span>WhatsApp / Telefone: (21) 97626-5242</span>
-                <svg class="w-4 h-4 text-cream-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
-              </a>
-
-              <a href="https://www.linkedin.com/in/jullianafurtado" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3.5 rounded-xl bg-obsidian-950/60 hover:bg-obsidian-950/80 border border-cream-200/15 text-sm font-medium text-cream-100 transition-colors">
-                <span>LinkedIn: linkedin.com/in/jullianafurtado</span>
-                <svg class="w-4 h-4 text-cream-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
-              </a>
-
-              <a href="https://github.com/JullianaFurtado" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3.5 rounded-xl bg-obsidian-950/60 hover:bg-obsidian-950/80 border border-cream-200/15 text-sm font-medium text-cream-100 transition-colors">
-                <span>GitHub: github.com/JullianaFurtado</span>
-                <svg class="w-4 h-4 text-cream-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
-              </a>
-            </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-6">
+          <div class="rounded-2xl p-5 bg-cream-50 dark:bg-obsidian-900 border border-cream-300 dark:border-obsidian-800">
+            <span class="text-xs font-semibold uppercase tracking-wider text-forest-800 dark:text-forest-600">Localização</span>
+            <p class="font-display font-bold text-base text-obsidian-950 dark:text-cream-50 mt-1">Nova Iguaçu, RJ</p>
+            <p class="text-xs text-obsidian-800/80 dark:text-cream-300/80 mt-0.5">Disponível para remoto ou híbrido</p>
           </div>
+
+          <a href="https://wa.me/5521976265242" target="_blank" rel="noopener noreferrer" class="rounded-2xl p-5 bg-cream-50 dark:bg-obsidian-900 border border-cream-300 dark:border-obsidian-800 hover:border-forest-700/70 transition-all block">
+            <span class="text-xs font-semibold uppercase tracking-wider text-forest-800 dark:text-forest-600">Telefone / WhatsApp</span>
+            <p class="font-display font-bold text-base text-obsidian-950 dark:text-cream-50 mt-1">(21) 97626-5242</p>
+            <p class="text-xs text-obsidian-800/80 dark:text-cream-300/80 mt-0.5">Clique para iniciar conversa</p>
+          </a>
+
+          <div class="rounded-2xl p-5 bg-cream-50 dark:bg-obsidian-900 border border-cream-300 dark:border-obsidian-800 flex items-center justify-between gap-2">
+            <div class="min-w-0">
+              <span class="text-xs font-semibold uppercase tracking-wider text-forest-800 dark:text-forest-600">E-mail Direto</span>
+              <a href="mailto:jullianamiguel@outlook.com" class="block font-display font-bold text-sm sm:text-base text-obsidian-950 dark:text-cream-50 mt-1 truncate hover:underline">
+                jullianamiguel@outlook.com
+              </a>
+            </div>
+            <button id="copy-email-btn" type="button" class="px-3 py-1.5 rounded-lg bg-forest-900 hover:bg-forest-800 text-cream-100 text-xs font-semibold shrink-0 transition-colors">
+              Copiar
+            </button>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3">
+          <a href="https://www.linkedin.com/in/jullianafurtado/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-forest-900 hover:bg-forest-800 text-cream-100 text-sm font-semibold border border-forest-700/40 transition-all">
+            <span>LinkedIn</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </a>
+          <a href="https://github.com/JullianaFurtado" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-cream-200/80 dark:bg-obsidian-850 hover:bg-cream-200 dark:hover:bg-obsidian-800 text-obsidian-950 dark:text-cream-100 text-sm font-semibold border border-cream-300 dark:border-obsidian-800 transition-all">
+            <span>GitHub</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </a>
         </div>
       </div>
     </section>
@@ -444,21 +521,20 @@
 
   <footer class="border-t border-cream-300/70 dark:border-obsidian-800 py-8 text-center text-xs text-obsidian-800 dark:text-cream-400">
     <div class="max-w-6xl mx-auto px-4">
-      © 2026 Julliana Silva Furtado • Todos os direitos reservados.
+      © 2026 Julliana Silva Furtado. Desenvolvido com foco em Engenharia de Software e IA.
     </div>
   </footer>
 
-  <!-- Toast discreto de confirmação -->
+  <!-- Toast discreto -->
   <div id="toast" class="fixed bottom-5 right-5 z-50 px-4 py-2.5 rounded-xl bg-forest-900 text-cream-100 text-xs font-semibold border border-forest-700 shadow-lg opacity-0 pointer-events-none transition-opacity duration-300">
     E-mail copiado para a área de transferência!
   </div>
 
   <script>
-    // Alternância de tema escuro/claro
+    // Alternância Tema Escuro / Tema Claro
     const themeToggle = document.getElementById('theme-toggle');
     const htmlEl = document.documentElement;
-    const savedTheme = localStorage.getItem('jf-portfolio-theme');
-    if (savedTheme === 'light') {
+    if (localStorage.getItem('jf-portfolio-theme') === 'light') {
       htmlEl.classList.remove('dark');
     }
 
@@ -467,7 +543,43 @@
       localStorage.setItem('jf-portfolio-theme', htmlEl.classList.contains('dark') ? 'dark' : 'light');
     });
 
-    // Suporte completo para foto de perfil: upload, arrastar/soltar, colar (Ctrl+V) e cache local
+    // Menu Mobile
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+
+    // Filtro de Projetos
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+
+        filterBtns.forEach(b => {
+          b.classList.remove('bg-forest-900', 'text-cream-100');
+          b.classList.add('text-obsidian-800', 'dark:text-cream-300');
+        });
+        btn.classList.add('bg-forest-900', 'text-cream-100');
+        btn.classList.remove('text-obsidian-800', 'dark:text-cream-300');
+
+        projectCards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    // Foto de perfil com fallback e carregamento local no preview
     const photoUpload = document.getElementById('photo-upload');
     const photoDropzone = document.getElementById('photo-dropzone');
     const profilePhoto = document.getElementById('profile-photo');
@@ -495,13 +607,12 @@
       applyPhotoDataUrl(cachedPhoto);
     }
 
-    photoUpload.addEventListener('change', (event) => {
-      const file = event.target.files && event.target.files[0];
-      readImageFile(file);
+    photoUpload.addEventListener('change', (e) => {
+      readImageFile(e.target.files && e.target.files[0]);
     });
 
-    photoDropzone.addEventListener('dragover', (event) => {
-      event.preventDefault();
+    photoDropzone.addEventListener('dragover', (e) => {
+      e.preventDefault();
       photoDropzone.classList.add('ring-2', 'ring-forest-600');
     });
 
@@ -509,25 +620,13 @@
       photoDropzone.classList.remove('ring-2', 'ring-forest-600');
     });
 
-    photoDropzone.addEventListener('drop', (event) => {
-      event.preventDefault();
+    photoDropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
       photoDropzone.classList.remove('ring-2', 'ring-forest-600');
-      const file = event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files[0];
-      readImageFile(file);
+      readImageFile(e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]);
     });
 
-    window.addEventListener('paste', (event) => {
-      const items = event.clipboardData && event.clipboardData.items;
-      if (!items) return;
-      for (const item of items) {
-        if (item.type.startsWith('image/')) {
-          readImageFile(item.getAsFile());
-          break;
-        }
-      }
-    });
-
-    // Copiar e-mail sem depender de alert()
+    // Copiar e-mail
     const copyBtn = document.getElementById('copy-email-btn');
     const toast = document.getElementById('toast');
 
